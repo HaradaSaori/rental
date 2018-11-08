@@ -13,16 +13,20 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
-    <style type="text/css">
+      <style type="text/css">
+  table {
+    border-collapse: separate;
+    border-spacing: 8px 0px;
+}
 a:hover img{
 opacity: 0.6;
 filter: alpha(opacity=60);
 -moz-opacity:0.6;
 }
-</style>
+  </style>
   </head>
   <body>
-      <!-- header -->
+       <!-- header -->
     <header>
       <nav class="navbar navbar-inverse">
       	<div class="container">
@@ -40,21 +44,14 @@ filter: alpha(opacity=60);
       </nav>
     </header>
     <!-- /header -->
-<div align="center"><br><br><br><br><img src="s_login.jpg"><br><br>
-<form class="form-signin">
+  <div align="center">
+  <img src="s_review_t.jpg">  レビュー投稿<br><br>
 <table>
 <tr>
-<td>
-      <label for="inputId" class="sr-only">ログインID</label>
-      <input type="text"class="form-control" placeholder="ログインID"></td>
-      </tr>
-      <tr>
-      <td>
-      <label for="inputPassword" class="sr-only">パスワード</label>
-      <input type="password"class="form-control" placeholder="パスワード"></td>
-      <tr><td><br></td></tr><tr><td>
-      <button class="btn btn-info" type="submit">ログイン</button>
-    </td>
-</tr></table></form></div>
+<td>内容</td>
+<td><textarea class="form-control" name="comment" rows="5" cols="80"></textarea></td></tr>
+</table><br><br>
+<input type="submit" class="btn btn-success" name = "submit" value="投稿">
+  </div>
   </body>
 </html>

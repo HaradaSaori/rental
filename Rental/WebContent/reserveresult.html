@@ -13,16 +13,21 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
-    <style type="text/css">
+      <style type="text/css">
+  table {
+width: 400px;
+    border-collapse: separate;
+    border-spacing: 8px 0px;
+}
 a:hover img{
 opacity: 0.6;
 filter: alpha(opacity=60);
 -moz-opacity:0.6;
 }
-</style>
+  </style>
   </head>
   <body>
-      <!-- header -->
+       <!-- header -->
     <header>
       <nav class="navbar navbar-inverse">
       	<div class="container">
@@ -40,21 +45,25 @@ filter: alpha(opacity=60);
       </nav>
     </header>
     <!-- /header -->
-<div align="center"><br><br><br><br><img src="s_login.jpg"><br><br>
-<form class="form-signin">
+  <div align="center">
+  <img src="index_tanuki.jpg" /><br><br>
+ご予約ありがとうございます！<br><br>
+<table>
+ <tr><td>キャスト名：</td>
+ <td>宗次郎</td></tr>
+  <tr><td>日にち：</td>
+ <td>2018年11月20日</td></tr>
+  <tr><td>場所：</td>
+ <td>下北沢</td></tr>
+  <tr><td>依頼内容：</td>
+ <td>舞台のチラシ配りの手伝い</td></tr>
+ </table><br><br><br>
 <table>
 <tr>
-<td>
-      <label for="inputId" class="sr-only">ログインID</label>
-      <input type="text"class="form-control" placeholder="ログインID"></td>
-      </tr>
-      <tr>
-      <td>
-      <label for="inputPassword" class="sr-only">パスワード</label>
-      <input type="password"class="form-control" placeholder="パスワード"></td>
-      <tr><td><br></td></tr><tr><td>
-      <button class="btn btn-info" type="submit">ログイン</button>
-    </td>
-</tr></table></form></div>
+<td width="100" align="center"><button type="button" class="btn btn-success" onclick="location.href='castlist.html'">続けて予約する</button></td>
+<td width="100" align="center"><button type="button" class="btn btn-light" onclick="location.href='mypage.html'">マイページへ</button></td>
+</tr>
+</table><br><br><br>
+  </div>
   </body>
 </html>

@@ -13,13 +13,13 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
-    <style type="text/css">
+  <style type="text/css">
 a:hover img{
 opacity: 0.6;
 filter: alpha(opacity=60);
 -moz-opacity:0.6;
 }
-</style>
+  </style>
   </head>
   <body>
       <!-- header -->
@@ -27,7 +27,7 @@ filter: alpha(opacity=60);
       <nav class="navbar navbar-inverse">
       	<div class="container">
       		<div class="navbar-header">
-            <a class="navbar-brand" href="castlist.html"><img src="s_tanuki.png" /></a>
+            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
             </div>
 
              <ul class="nav navbar-nav navbar-right">
@@ -40,21 +40,25 @@ filter: alpha(opacity=60);
       </nav>
     </header>
     <!-- /header -->
-<div align="center"><br><br><br><br><img src="s_login.jpg"><br><br>
-<form class="form-signin">
+    <div align="center">
+<br><br><br>
+<img src ="s_delete.jpg"> <font size ="3">退会確認</font><br><br><br>
+ログインID : harada_saori<br>
+本当に退会してよろしいですか？<br><br>
 <table>
 <tr>
-<td>
-      <label for="inputId" class="sr-only">ログインID</label>
-      <input type="text"class="form-control" placeholder="ログインID"></td>
-      </tr>
-      <tr>
-      <td>
-      <label for="inputPassword" class="sr-only">パスワード</label>
-      <input type="password"class="form-control" placeholder="パスワード"></td>
-      <tr><td><br></td></tr><tr><td>
-      <button class="btn btn-info" type="submit">ログイン</button>
-    </td>
-</tr></table></form></div>
+<td width="120">
+<form>
+<div align="center"><input type="button" class="btn btn-light" name = "cancel" value="キャンセル" onclick="history.back()"></div>
+</form>
+</td>
+<td width="120">
+<form action="Userdelete" method="post">
+<input type="hidden" value="<%= user.getLoginId() %>" name="loginid">
+
+<div align="center"><input type="submit" class="btn btn-info" name = "submit" value="OK"></div>
+</form>
+</td></tr></table>
+</div>
   </body>
 </html>

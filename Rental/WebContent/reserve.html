@@ -13,21 +13,21 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
-    <style type="text/css">
-a:hover img{
-opacity: 0.6;
-filter: alpha(opacity=60);
--moz-opacity:0.6;
+     <style type="text/css">
+  table {
+width: 400px;
+    border-collapse: separate;
+    border-spacing: 8px 15px;
 }
 </style>
   </head>
   <body>
-      <!-- header -->
+       <!-- header -->
     <header>
       <nav class="navbar navbar-inverse">
       	<div class="container">
       		<div class="navbar-header">
-            <a class="navbar-brand" href="castlist.html"><img src="s_tanuki.png" /></a>
+            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
             </div>
 
              <ul class="nav navbar-nav navbar-right">
@@ -40,21 +40,24 @@ filter: alpha(opacity=60);
       </nav>
     </header>
     <!-- /header -->
-<div align="center"><br><br><br><br><img src="s_login.jpg"><br><br>
+  <div align="center"><br><br><br>
+<img src ="s_tanukidetail.jpg"> <font size ="3">レンタル申し込み</font><br><br><br>
 <form class="form-signin">
 <table>
 <tr>
-<td>
-      <label for="inputId" class="sr-only">ログインID</label>
-      <input type="text"class="form-control" placeholder="ログインID"></td>
-      </tr>
-      <tr>
-      <td>
-      <label for="inputPassword" class="sr-only">パスワード</label>
-      <input type="password"class="form-control" placeholder="パスワード"></td>
-      <tr><td><br></td></tr><tr><td>
-      <button class="btn btn-info" type="submit">ログイン</button>
-    </td>
-</tr></table></form></div>
+<td>日にち</td>
+<td><input class="form-control" type="text" name="deta"></td>
+</tr>
+<tr>
+<td>場所</td>
+<td><input class="form-control" type="text" name="place" ></td>
+</tr>
+<tr>
+<td>依頼内容</td>
+<td><textarea class="form-control" name="comment"></textarea></td></tr>
+<tr>
+</table><br>
+<input type="submit" class="btn btn-info" value="予約する"></form><br><br><br><br>
+  </div>
   </body>
 </html>

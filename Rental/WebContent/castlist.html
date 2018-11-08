@@ -17,7 +17,7 @@
   table {
 width: 400px;
     border-collapse: separate;
-    border-spacing: 8px 0px;
+    border-spacing: 8px 5px;
 }
 a:hover img{
 opacity: 0.6;
@@ -32,7 +32,7 @@ filter: alpha(opacity=60);
       <nav class="navbar navbar-inverse">
       	<div class="container">
       		<div class="navbar-header">
-            <a class="navbar-brand" href="castlist.html"><img src="s_tanuki.png" /></a>
+            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
             </div>
 
              <ul class="nav navbar-nav navbar-right">
@@ -45,39 +45,39 @@ filter: alpha(opacity=60);
       </nav>
     </header>
     <!-- /header -->
-<div align="center">
-<br><br><br><br>
-<form class="form-signin">
+    <div align="center">
+<br><br><br><img src ="s_search.jpg"> <font size ="3">検索条件</font><br><br>
 <table>
     <tr>
-      <th scope="col">ログインID</th><th></th></tr>
-		<tr>
-           <td height="50" valign="top">harada_saori</td></tr>
-           <tr>
-      <th scope="col">氏名</th>
-      <th scope="col">電話番号</th>
+      <th>性別</th>
+      <td><input type="radio" value="男">男 <input type="radio" value="女">女</td>
+    </tr>
+    <tr>
+      <th>人年齢</th>
+      <td><input class="form-control" type="text" name="age" ></td>
+    </tr>
+    <tr>
+      <th>空きスケジュール</th>
+      <td><input class="form-control" type="text" name="schedule" ></td>
       </tr>
       <tr>
-            <td height="50" valign="top"><input type="text" name="name" value="原田 沙織" class="form-control"></td>
-      <td height="50" valign="top"><input type="text" name="phone" value="080-0000-0000" class="form-control"></td>
+      <th></th><td>
+      <div align ="right"><input type="submit" class="btn btn-light" value="検索"></div>
+      </td>
     </tr>
-</table><br>
-<input type="submit" class="btn btn-light" value="情報の更新"></form><br>
-<table>
-    <tr><td><div align="right"><a href="userdelete.html">退会する</a></div></td></tr></table><br><br>
+</table><br><a href="newcast.html">キャスト登録</a><br><br>
 <img src="line.jpg">
-<br><br><br><font size = "5">レンタル履歴</font><br><br>
+<br><br><br>
+<img src="s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>
+<br>
 <table>
  <tr align=center>
   <td>[宗次郎]<br><a href="castdetail.html"><img src=s_tanuki_profile.jpg></a>
-  <br>2018/11/01<br>
-  <button type="button" class="btn btn-success" onclick="location.href='review.html'">レビューを書く</button></td>
+  <br>説明文</td>
   <td>[ぽん太]<br><a href="castdetail.html"><img src=s_tanuki_profile.jpg></a>
-  <br>2018/08/10<br>
-  <button type="button" class="btn btn-success" onclick="location.href='review.html'">レビューを書く</button></td>
+  <br>説明文</td>
   <td>[小春]<br><a href="castdetail.html"><img src=s_tanuki_profile.jpg></a>
-  <br>2017/12/25<br>
-  <button type="button" class="btn btn-success" onclick="location.href='review.html'">レビューを書く</button></td>
+  <br>説明文</td>
  </tr>
 </table><br><br><br>
 </div>

@@ -13,13 +13,18 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
-    <style type="text/css">
+  <style type="text/css">
+  table {
+width: 400px;
+    border-collapse: separate;
+    border-spacing: 8px 0px;
+}
 a:hover img{
 opacity: 0.6;
 filter: alpha(opacity=60);
 -moz-opacity:0.6;
 }
-</style>
+  </style>
   </head>
   <body>
       <!-- header -->
@@ -40,21 +45,25 @@ filter: alpha(opacity=60);
       </nav>
     </header>
     <!-- /header -->
-<div align="center"><br><br><br><br><img src="s_login.jpg"><br><br>
-<form class="form-signin">
+<div align="center">
+<br><br><br><br><form class="form-signin">
 <table>
-<tr>
-<td>
-      <label for="inputId" class="sr-only">ログインID</label>
-      <input type="text"class="form-control" placeholder="ログインID"></td>
-      </tr>
-      <tr>
-      <td>
-      <label for="inputPassword" class="sr-only">パスワード</label>
-      <input type="password"class="form-control" placeholder="パスワード"></td>
-      <tr><td><br></td></tr><tr><td>
-      <button class="btn btn-info" type="submit">ログイン</button>
-    </td>
-</tr></table></form></div>
+<tr><td>
+</td></tr>
+ <tr><td>キャスト名：</td>
+ <td><input class="form-control" type="text" name="name"></td></tr>
+  <tr><td>性別：</td>
+ <td><input class="form-control" type="text" name="f"></td></tr>
+  <tr><td>人年齢：</td>
+ <td><input class="form-control" type="text" name="age"></td></tr>
+  <tr><td>得意な化け術：</td>
+ <td><input class="form-control" type="text" name="bake"></td></tr>
+  <tr><td>一言：</td>
+ <td><input class="form-control" type="text" name="comment"></td></tr>
+   <tr><td>レンタル金額：</td>
+ <td><input class="form-control" type="text" name="price"></td></tr>
+</table><br>
+<input type="submit" class="btn btn-light" value="登録"></form>
+</div>
   </body>
 </html>
