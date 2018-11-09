@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -22,31 +23,14 @@ width: 400px;
 </style>
   </head>
   <body>
-       <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
+<jsp:include page="/baselayout/header.jsp" />
   <div align="center"><br><br><br>
-<img src ="s_tanukidetail.jpg"> <font size ="3">レンタル申し込み</font><br><br><br>
+<img src ="./img/s_tanukidetail.jpg"> <font size ="3">レンタル申し込み</font><br><br><br>
 <form class="form-signin">
 <table>
 <tr>
 <td>日にち</td>
-<td><input class="form-control" type="text" name="deta"></td>
+<td><input class="form-control" type="date" name="deta"></td>
 </tr>
 <tr>
 <td>場所</td>

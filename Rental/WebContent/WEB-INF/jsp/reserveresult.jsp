@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -27,26 +28,9 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
-       <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="castlist.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
+ <jsp:include page="/baselayout/header.jsp" />
   <div align="center">
-  <img src="index_tanuki.jpg" /><br><br>
+  <img src="./img/index_tanuki.jpg" /><br><br>
 ご予約ありがとうございます！<br><br>
 <table>
  <tr><td>キャスト名：</td>
@@ -60,8 +44,8 @@ filter: alpha(opacity=60);
  </table><br><br><br>
 <table>
 <tr>
-<td width="100" align="center"><button type="button" class="btn btn-success" onclick="location.href='castlist.html'">続けて予約する</button></td>
-<td width="100" align="center"><button type="button" class="btn btn-light" onclick="location.href='mypage.html'">マイページへ</button></td>
+<td width="100" align="center"><button type="button" class="btn btn-success" onclick="location.href='CastListServlet'">続けて予約する</button></td>
+<td width="100" align="center"><button type="button" class="btn btn-light" onclick="location.href='MypageServlet'">マイページへ</button></td>
 </tr>
 </table><br><br><br>
   </div>

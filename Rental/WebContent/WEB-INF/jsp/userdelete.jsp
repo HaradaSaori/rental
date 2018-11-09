@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -22,29 +23,12 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
-      <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
+      <jsp:include page="/baselayout/header.jsp" />
     <div align="center">
 <br><br><br>
-<img src ="s_delete.jpg"> <font size ="3">削除確認</font><br><br><br>
-キャスト名：宗次郎<br>
-本当に削除してよろしいですか？<br><br>
+<img src ="./img/s_delete.jpg"> <font size ="3">退会確認</font><br><br><br>
+ログインID : ${user.loginId}<br>
+本当に退会してよろしいですか？<br><br>
 <table>
 <tr>
 <td width="120">
@@ -54,7 +38,7 @@ filter: alpha(opacity=60);
 </td>
 <td width="120">
 <form action="Userdelete" method="post">
-<input type="hidden" value="<%= user.getLoginId() %>" name="loginid">
+<input type="hidden" value="" name="loginid">
 
 <div align="center"><input type="submit" class="btn btn-info" name = "submit" value="OK"></div>
 </form>

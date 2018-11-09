@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -23,7 +24,7 @@ width: 400px;
   </head>
   <body>
   <div align="center"><br><br><br>
-<img src ="s_new.jpg"> <font size ="3">新規登録</font><br><br><br>
+<img src ="./img/s_new.jpg"> <font size ="3">新規登録</font><br><br><br>
 <form class="form-signin">
 <table>
 <tr>

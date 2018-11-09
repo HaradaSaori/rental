@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -26,29 +27,12 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
-      <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
+ <jsp:include page="/baselayout/header.jsp" />
     <div align="center">
 
-<img src="s_tanukidetail.jpg">  <font size = "4">宗次郎</font><br><br><br>
+<img src="./img/s_tanukidetail.jpg">  <font size = "4">宗次郎</font><br><br><br>
 <table>
- <tr><td rowspan="6"  width="400"><img src="s_tanuki_profile.jpg"></td></tr>
+ <tr><td rowspan="6"  width="400"><img src="./img/s_tanuki_profile.jpg"></td></tr>
  <tr><td>名前：</td>
  <td>宗次郎</td></tr>
   <tr><td>性別：</td>
@@ -62,9 +46,9 @@ filter: alpha(opacity=60);
 </table><br><br><br>
 
 レンタル金額(一日)：￥10000<br>
-<button type="button" class="btn btn-warning btn-lg" onclick="location.href='reserve.html'">レンタルする！</button><br><br><br><br>
+<button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet'">レンタルする！</button><br><br><br><br>
 <br>
-<img src="s_review.jpg">  <font size = "4">お客様の声</font>
+<img src="./img/s_review.jpg">  <font size = "4">お客様の声</font>
 <div class="inline_box">
 <table>
  <tr><td width="180" valign="top">東京都 20代女性：</td>
@@ -83,8 +67,8 @@ filter: alpha(opacity=60);
 <br><br><br>
 <table>
 <tr>
-<td width="100" align="center"><button type="button" class="btn btn-danger" onclick="location.href='castdelete.html'">削除</button></td>
-<td width="100" align="center"><button type="button" class="btn btn-info" onclick="location.href='castf5.html'">更新</button></td>
+<td width="100" align="center"><button type="button" class="btn btn-danger" onclick="location.href='CastDeleteServlet'">削除</button></td>
+<td width="100" align="center"><button type="button" class="btn btn-info" onclick="location.href='CastF5Servlet'">更新</button></td>
 </tr>
 </table><br><br><br>
 </div>

@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -22,36 +23,19 @@ filter: alpha(opacity=60);
 </style>
   </head>
   <body>
-      <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="castlist.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
-<div align="center"><br><br><br><br><img src="s_login.jpg"><br><br>
-<form class="form-signin">
+ <jsp:include page="/baselayout/header.jsp" />
+<div align="center"><br><br><br><br><img src="./img/s_login.jpg"><br><br>
+<form class="form-signin" action="LoginServlet" method="post">
 <table>
 <tr>
 <td>
       <label for="inputId" class="sr-only">ログインID</label>
-      <input type="text"class="form-control" placeholder="ログインID"></td>
+      <input type="text" name="loginId" id="inputLoginId" class="form-control" placeholder="ログインID"></td>
       </tr>
       <tr>
       <td>
       <label for="inputPassword" class="sr-only">パスワード</label>
-      <input type="password"class="form-control" placeholder="パスワード"></td>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="パスワード"></td>
       <tr><td><br></td></tr><tr><td>
       <button class="btn btn-info" type="submit">ログイン</button>
     </td>

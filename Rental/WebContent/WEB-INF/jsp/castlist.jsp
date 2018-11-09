@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -27,26 +28,9 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
-      <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="index.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
+ <jsp:include page="/baselayout/header.jsp" />
     <div align="center">
-<br><br><br><img src ="s_search.jpg"> <font size ="3">検索条件</font><br><br>
+<br><br><br><img src ="./img/s_search.jpg"> <font size ="3">検索条件</font><br><br>
 <table>
     <tr>
       <th>性別</th>
@@ -65,18 +49,18 @@ filter: alpha(opacity=60);
       <div align ="right"><input type="submit" class="btn btn-light" value="検索"></div>
       </td>
     </tr>
-</table><br><a href="newcast.html">キャスト登録</a><br><br>
-<img src="line.jpg">
+</table><br><a href="NewCastServlet">キャスト登録</a><br><br>
+<img src="./img/line.jpg">
 <br><br><br>
-<img src="s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>
+<img src="./img/s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>
 <br>
 <table>
  <tr align=center>
-  <td>[宗次郎]<br><a href="castdetail.html"><img src=s_tanuki_profile.jpg></a>
+  <td>[宗次郎]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
   <br>説明文</td>
-  <td>[ぽん太]<br><a href="castdetail.html"><img src=s_tanuki_profile.jpg></a>
+  <td>[ぽん太]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
   <br>説明文</td>
-  <td>[小春]<br><a href="castdetail.html"><img src=s_tanuki_profile.jpg></a>
+  <td>[小春]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
   <br>説明文</td>
  </tr>
 </table><br><br><br>

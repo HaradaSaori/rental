@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -27,24 +28,7 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
-      <!-- header -->
-    <header>
-      <nav class="navbar navbar-inverse">
-      	<div class="container">
-      		<div class="navbar-header">
-            <a class="navbar-brand" href="castlist.html"><img src="s_tanuki.png" /></a>
-            </div>
-
-             <ul class="nav navbar-nav navbar-right">
-             <li>
-            <a class="navbar-brand" href="mypage.html"><img src="s_mypage.png" /></a>
-            <a class="navbar-brand" href="index.html"><img src="s_logout.png" /></a>
-  		  </li>
-  		  </ul>
-      		</div>
-      </nav>
-    </header>
-    <!-- /header -->
+    <jsp:include page="/baselayout/header.jsp" />
 <div align="center">
 <br><br><br><br><form class="form-signin">
 <table>
@@ -63,7 +47,7 @@ filter: alpha(opacity=60);
    <tr><td>レンタル金額：</td>
  <td><input class="form-control" type="text" name="price"></td></tr>
 </table><br>
-<input type="submit" class="btn btn-light" value="情報の更新"></form>
+<input type="submit" class="btn btn-light" value="登録"></form>
 </div>
   </body>
 </html>

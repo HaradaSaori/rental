@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -13,19 +14,28 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
+      <style type="text/css">
+  table {
+    border-collapse: separate;
+    border-spacing: 8px 0px;
+}
+a:hover img{
+opacity: 0.6;
+filter: alpha(opacity=60);
+-moz-opacity:0.6;
+}
+  </style>
   </head>
   <body>
+  <jsp:include page="/baselayout/header.jsp" />
   <div align="center">
-  <img src="index_tanuki.jpg" /><br><br>
-  <img src="logo_tanuki.png" /><br><br>
-  選び抜かれた化け術の得意なたぬきたちが<br>
-  なんでも代行・代理・同行いたします<br><br><br>
+  <img src="./img/s_review_t.jpg">  レビュー投稿<br><br>
 <table>
 <tr>
-<td width="100" align="center"><button type="button" class="btn btn-info" onclick="location.href='login.html'">ログイン</button></td>
-<td width="100" align="center"><button type="button" class="btn btn-warning" onclick="location.href='newuser.html'">新規登録</button></td>
-</tr>
-</table><br><br><br>
+<td>内容</td>
+<td><textarea class="form-control" name="comment" rows="5" cols="80"></textarea></td></tr>
+</table><br><br>
+<input type="submit" class="btn btn-success" name = "submit" value="投稿">
   </div>
   </body>
 </html>
