@@ -24,17 +24,22 @@ width: 400px;
 </style>
   </head>
   <body>
+  	<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
   <div align="center"><br><br><br>
 <img src ="./img/s_new.jpg"> <font size ="3">新規登録</font><br><br><br>
-<form class="form-signin">
+<form class="form-signin" action="NewUserServlet" method="post">
 <table>
 <tr>
 <td>ログインID</td>
-<td><input class="form-control" type="text" name="loginid"  autofocus></td>
+<td><input class="form-control" type="text" name="loginId"  autofocus></td>
 </tr>
 <tr>
 <td>氏名</td>
-<td><input class="form-control" type="text" name="name" ></td>
+<td><input class="form-control" type="text" name="userName" ></td>
 </tr>
 <tr>
 <td>電話番号</td>
@@ -45,7 +50,7 @@ width: 400px;
 </tr>
 <tr>
 <td>パスワード(確認)</td>
-<td><input class="form-control" type="password" size="20" name ="passwordcon" ></td>
+<td><input class="form-control" type="password" size="20" name ="passwordCon" ></td>
 </tr>
 </table><br>
 <input type="submit" class="btn btn-info" value="登録"></form><br><br><br><br>

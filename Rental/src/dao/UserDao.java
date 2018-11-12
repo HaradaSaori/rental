@@ -157,4 +157,36 @@ public class UserDao {
 	        return null;
 	    }
 
+public void newUserDate(String loginId, String password, String userName, String phone) throws SQLException{
+    Connection conn = null;
+    try {
+        // データベースへ接続
+        conn = DBManager.getConnection();
+
+     // INSERT文を準備
+        String sql = "INSERT INTO user(login_id, password, user_name, phone) VALUES(?,?,?,?)";
+
+     // INSERTを実行
+        PreparedStatement pStmt = conn.prepareStatement(sql);
+        pStmt.setString(1, loginId);
+        pStmt.setString(2, password);
+        pStmt.setString(3, userName);
+        pStmt.setString(4, phone);
+        pStmt.executeUpdate();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw e;
+    } finally {
+        // データベース切断
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+	}
 }

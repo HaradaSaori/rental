@@ -40,7 +40,6 @@ filter: alpha(opacity=60);
                  <tr>
                    <th>ログインID</th>
                    <th>ユーザ名</th>
-                   <th>電話番号</th>
                    <th></th>
                  </tr>
                </thead>
@@ -49,11 +48,15 @@ filter: alpha(opacity=60);
                    <tr>
                      <td>${user.loginId}</td>
                      <td>${user.userName}</td>
-                     <td>${user.phone}</td>
                      <!-- ログインボタンの表示制御 -->
-
 					<td>
+					<c:choose>
+					<c:when test="${userInfo.loginId == 'admin'}">
                        <a class="btn btn-primary" href="MypageServlet?id=${user.id}">マイページ</a>
+					</c:when>
+					<c:when test="${userInfo.loginId == user.loginId}">
+                       <a class="btn btn-primary" href="MypageServlet?id=${user.id}">マイページ</a>
+                     </c:when></c:choose></td>
                    </tr>
                  </c:forEach>
                </tbody>
