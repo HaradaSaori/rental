@@ -32,14 +32,6 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインセッションがある場合、ユーザ一覧画面にリダイレクトさせる
-				HttpSession session = request.getSession();
-				if (!(null == session.getAttribute("userInfo"))) {
-					// ユーザ一覧ページへ遷移(リダイレクト).
-					response.sendRedirect( "CastListServlet" );
-					return;
-					}
-
 
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
@@ -51,36 +43,36 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // リクエストパラメータの文字コードを指定
+        request.setCharacterEncoding("UTF-8");
 
-	// リクエストパラメータの文字コードを指定
-    request.setCharacterEncoding("UTF-8");
+		// リクエストパラメータの入力項目を取得
+		String loginId = request.getParameter("loginId");
+		String password = request.getParameter("password");
 
-	// リクエストパラメータの入力項目を取得
-	String loginId = request.getParameter("loginId");
-	String password = request.getParameter("password");
+		// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
+		UserDao userDao = new UserDao();
+		UserBeans user = userDao.findByLoginInfo(loginId, password);
 
-	// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
-	UserDao userDao = new UserDao();
-	UserBeans user = userDao.findByLoginInfo(loginId, password);
+		/** テーブルに該当のデータが見つからなかった場合 **/
+		if (user == null) {
+			// リクエストスコープにエラーメッセージをセット
+			request.setAttribute("errMsg", "ログインに失敗しました。");
 
-	/** テーブルに該当のデータが見つからなかった場合 **/
-	if (user == null) {
-		// リクエストスコープにエラーメッセージをセット
-		request.setAttribute("errMsg", "ログインに失敗しました。ログインIDまたはパスワードが異なります。");
+			// ログインjspにフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
-		// ログインjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-		dispatcher.forward(request, response);
-		return;
+		/** テーブルに該当のデータが見つかった場合 **/
+		// セッションにユーザの情報をセット
+		HttpSession session = request.getSession();
+		session.setAttribute("userInfo", user);
+
+		// ユーザ一覧のサーブレットにリダイレクト
+		response.sendRedirect("CastListServlet");
+
 	}
 
-	/** テーブルに該当のデータが見つかった場合 **/
-	// セッションにユーザの情報をセット
-	HttpSession session = request.getSession();
-	session.setAttribute("userInfo", user);
-
-	// キャスト一覧のサーブレットにリダイレクト
-	response.sendRedirect("CastListServlet");
-
-	}
 }

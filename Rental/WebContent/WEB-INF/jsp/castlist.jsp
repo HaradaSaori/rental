@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -28,7 +29,7 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
- <jsp:include page="/baselayout/header.jsp" />
+ 	<jsp:include page="/baselayout/header.jsp" />
     <div align="center">
 <br><br><br><img src ="./img/s_search.jpg"> <font size ="3">検索条件</font><br><br>
 <table>
@@ -64,6 +65,7 @@ filter: alpha(opacity=60);
   <br>説明文</td>
  </tr>
 </table><br><br><br>
+</div>
 </div>
   </body>
 </html>

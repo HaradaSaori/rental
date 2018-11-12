@@ -1,22 +1,16 @@
 package beans;
 
-import java.util.Date;
-
-
 /**
  * ユーザデータ
  *
  *
  */
 public class UserBeans{
-	private int userId;
+	private int id;
 	private String loginId;
 	private String userName;
 	private String phone;
 	private String password;
-
-	private Date createDate;
-	private Date updateDate;
 
 	// コンストラクタ
 	public UserBeans() {
@@ -29,20 +23,29 @@ public class UserBeans{
 		}
 
 		//
-		public UserBeans(int userId,String loginId,String userName,String phone) {
-			this.userId = userId;
+		public UserBeans(int id,String loginId,String userName,String phone) {
+			this.id = id;
 			this.loginId = loginId;
 			this.userName = userName;
 			this.phone = phone;
 		}
 
+		//
+		public UserBeans(int id,String loginId,String userName,String phone,String password) {
+			this.id = id;
+			this.loginId = loginId;
+			this.userName = userName;
+			this.phone = phone;
+			this.password = password;
+		}
+
 	//setter,getter
-	public int getUserId() {
-		return userId;
+	public int getId() {
+		return id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getLoginId() {
@@ -77,19 +80,4 @@ public class UserBeans{
 		this.password = password;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
 }

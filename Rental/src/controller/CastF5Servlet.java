@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class CastF5Servlet
@@ -28,6 +29,14 @@ public class CastF5Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// ログインセッションがない場合、ログイン画面にリダイレクトさせる
+		HttpSession session = request.getSession();
+		if (null == session.getAttribute("userInfo")){
+			// ログイン画面へ遷移(リダイレクト).
+			response.sendRedirect( "IndexServlet" );
+			return;
+			}
+
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castf5.jsp");
 		dispatcher.forward(request, response);

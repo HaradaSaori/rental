@@ -36,20 +36,20 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (null == session.getAttribute("userInfo")){
 			// ログイン画面へ遷移(リダイレクト).
-			response.sendRedirect( "LoginServlet" );
+			response.sendRedirect( "IndexServlet" );
 			return;
 			}
 
 		// URLからGETパラメータとしてIDを受け取る
-		String userId = request.getParameter("userId");
+		String id = request.getParameter("id");
 
 		// 確認用：idをコンソールに出力
-	       System.out.println(userId);
+	       System.out.println(id);
 
 
 		//idを引数にして、idに紐づくユーザ情報を出力する
 	       UserDao userDao = new UserDao();
-		   UserBeans userdata = userDao.userData(Integer.parseInt(userId));
+		   UserBeans userdata = userDao.userData(id);
 
 		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
 		   request.setAttribute("userdata",userdata);

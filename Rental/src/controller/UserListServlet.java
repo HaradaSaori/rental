@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,17 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.UserBeans;
+import dao.UserDao;
 /**
- * Servlet implementation class ReserveResultServlet
+ * Servlet implementation class UserListServlet
  */
-@WebServlet("/ReserveResultServlet")
-public class ReserveResultServlet extends HttpServlet {
+@WebServlet("/UserListServlet")
+public class UserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReserveResultServlet() {
+    public UserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,9 +40,16 @@ public class ReserveResultServlet extends HttpServlet {
 			return;
 			}
 
-		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserveresult.jsp");
-		dispatcher.forward(request, response);
+		// ユーザ一覧情報を取得
+				UserDao userDao = new UserDao();
+				List<UserBeans> userList = userDao.findAll();
+
+				// リクエストスコープにユーザ一覧情報をセット
+				request.setAttribute("userList", userList);
+
+				// ユーザ一覧のjspにフォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userlist.jsp");
+				dispatcher.forward(request, response);
 
 	}
 
@@ -47,7 +57,8 @@ public class ReserveResultServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
