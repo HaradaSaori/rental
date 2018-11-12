@@ -39,6 +39,12 @@ public class UserBeans{
 			this.password = password;
 		}
 
+		public UserBeans(String loginId, String userName, String phone) {
+			this.loginId = loginId;
+			this.userName = userName;
+			this.phone = phone;
+		}
+
 	//setter,getter
 	public int getId() {
 		return id;

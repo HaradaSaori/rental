@@ -189,4 +189,76 @@ public void newUserDate(String loginId, String password, String userName, String
         }
     }
 	}
+
+public void UserF5(String password, String userName, String phone, String loginId)throws SQLException {
+    Connection conn = null;
+    try {
+        // データベースへ接続
+        conn = DBManager.getConnection();
+
+     // UPDATE文を準備
+        String sql = "UPDATE user SET password = ?,user_name = ?,phone = ? WHERE login_id = ?";
+
+     // UPDATEを実行
+        PreparedStatement pStmt = conn.prepareStatement(sql);
+        pStmt.setString(1, password);
+        pStmt.setString(2, userName);
+        pStmt.setString(3, phone);
+        pStmt.setString(4, loginId);
+        pStmt.executeUpdate();
+
+        pStmt.close();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw e;
+
+    } finally {
+        // データベース切断
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+}
+
+public void UserF5pass(String userName, String phone, String loginId)throws SQLException {
+    Connection conn = null;
+    try {
+        // データベースへ接続
+        conn = DBManager.getConnection();
+
+     // UPDATE文を準備
+        String sql = "UPDATE user SET user_name = ?,phone = ?, WHERE login_id = ?";
+
+     // UPDATEを実行
+        PreparedStatement pStmt = conn.prepareStatement(sql);
+        pStmt.setString(1, userName);
+        pStmt.setString(2, phone);
+        pStmt.setString(3, loginId);
+        pStmt.executeUpdate();
+
+        pStmt.close();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw e;
+
+    } finally {
+        // データベース切断
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+}
+
 }

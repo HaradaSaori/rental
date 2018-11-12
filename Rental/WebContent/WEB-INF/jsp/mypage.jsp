@@ -30,9 +30,15 @@ filter: alpha(opacity=60);
   </head>
   <body>
     <jsp:include page="/baselayout/header.jsp" />
+    	<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
 <div align="center">
 <br><br><br><br>
-<form class="form-signin">
+<form class="form-signin" action="MypageServlet" method="post">
+<input type="hidden" value="${userdata.loginId}" name="loginId">
 <table>
     <tr>
       <th scope="col">ログインID</th><th></th></tr>
@@ -43,8 +49,15 @@ filter: alpha(opacity=60);
       <th scope="col">電話番号</th>
       </tr>
       <tr>
-            <td height="50" valign="top"><input type="text" name="name" value="${userdata.userName}" class="form-control"></td>
+            <td height="50" valign="top"><input type="text" name="userName" value="${userdata.userName}" class="form-control"></td>
       <td height="50" valign="top"><input type="text" name="phone" value="${userdata.phone}" class="form-control"></td>
+    </tr>
+          <tr><th scope="col">パスワード</th>
+      <th scope="col">パスワード確認</th>
+      </tr>
+         <tr>
+            <td height="50" valign="top"><input type="password" name="password" class="form-control"></td>
+      <td height="50" valign="top"><input type="password" name="passwordCon" class="form-control"></td>
     </tr>
 </table><br>
 <input type="submit" class="btn btn-light" value="情報の更新"></form><br>
