@@ -56,16 +56,11 @@ filter: alpha(opacity=60);
 <img src="./img/s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>
 <br>
 <table>
- <tr align=center>
-  <td>[宗次郎]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>説明文</td>
-  <td>[ぽん太]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>説明文</td>
-  <td>[小春]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>説明文</td>
- </tr>
+ <tr align=center><c:forEach var="cast" items="${castList}">
+  <td>${cast.castName}<br><a href="CastDetailServlet?id=${cast.id}"><img src=./img/s_tanuki_profile.jpg></a>
+  <br>${cast.age}代・${cast.gender}</td>
+ </c:forEach></tr>
 </table><br><br><br>
-</div>
 </div>
   </body>
 </html>

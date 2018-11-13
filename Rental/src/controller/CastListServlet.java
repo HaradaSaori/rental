@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.UserBeans;
-import dao.UserDao;
+import beans.CastBeans;
+import dao.CastDao;
 
 /**
  * Servlet implementation class CastListServlet
@@ -42,11 +42,11 @@ public class CastListServlet extends HttpServlet {
 			}
 
 		// ユーザ一覧情報を取得
-		UserDao userDao = new UserDao();
-		List<UserBeans> userList = userDao.findAll();
+		CastDao castDao = new CastDao();
+		List<CastBeans> castList = castDao.all();
 
 		// リクエストスコープにユーザ一覧情報をセット
-		request.setAttribute("userList", userList);
+		request.setAttribute("castList", castList);
 
 		// ユーザ一覧のjspにフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castlist.jsp");

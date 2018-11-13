@@ -31,22 +31,22 @@ filter: alpha(opacity=60);
  <jsp:include page="/baselayout/header.jsp" />
     <div align="center">
 
-<img src="./img/s_tanukidetail.jpg">  <font size = "4">宗次郎</font><br><br><br>
+<img src="./img/s_tanukidetail.jpg">  <font size = "4">${castdata.castName}</font><br><br><br>
 <table>
  <tr><td rowspan="6"  width="400"><img src="./img/s_tanuki_profile.jpg"></td></tr>
  <tr><td>名前：</td>
- <td>宗次郎</td></tr>
+ <td>${castdata.castName}</td></tr>
   <tr><td>性別：</td>
- <td>男</td></tr>
+ <td>${castdata.gender}</td></tr>
   <tr><td>人年齢：</td>
- <td>50代</td></tr>
+ <td>${castdata.age}代</td></tr>
   <tr><td>得意な化け術：</td>
- <td>泣き虫な父親役</td></tr>
+ <td>${castdata.bake}</td></tr>
   <tr><td>一言：</td>
- <td>誠心誠意化けさせて頂きます。</td></tr>
+ <td>${castdata.comment}</td></tr>
 </table><br><br><br>
 
-レンタル金額(一日)：￥10000<br>
+レンタル金額(一日)：￥${castdata.price}<br>
 <button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet'">レンタルする！</button><br><br><br><br>
 <br>
 <img src="./img/s_review.jpg">  <font size = "4">お客様の声</font>

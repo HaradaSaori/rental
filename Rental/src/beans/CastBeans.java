@@ -1,15 +1,12 @@
 package beans;
 
-import java.util.Date;
-
-
 /**
  * キャストデータ
  *
  *
  */
 public class CastBeans{
-	private int castId;
+	private int id;
 	private String castName;
 	private String gender;
 	private int age;
@@ -17,21 +14,28 @@ public class CastBeans{
 	private String comment;
 	private int price;
 
-	private Date createDate;
-	private Date updateDate;
-
 	// コンストラクタ
 	public CastBeans() {
 	}
 
-
-
-	public int getCastId() {
-		return castId;
+	//
+	public CastBeans(int id,String castName,int age,String gender,String bake,String comment,int price) {
+		this.id = id;
+		this.castName = castName;
+		this.age = age;
+		this.gender = gender;
+		this.bake = bake;
+		this.comment = comment;
+		this.price = price;
 	}
 
-	public void setCastId(int castId) {
-		this.castId = castId;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCastName() {
@@ -80,22 +84,6 @@ public class CastBeans{
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
 	}
 
 }
