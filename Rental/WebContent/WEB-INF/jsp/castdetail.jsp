@@ -65,13 +65,6 @@ filter: alpha(opacity=60);
  とっても熱心に話を聞いてくれ、最後には二人で泣き笑いでした。<br>
  ありがとう！我が友よ。</td></tr>
 </table></div>
-<br><br><br>
-<table>
-<tr>
-<td width="100" align="center"><button type="button" class="btn btn-danger" onclick="location.href='CastDeleteServlet'">削除</button></td>
-<td width="100" align="center"><button type="button" class="btn btn-info" onclick="location.href='CastF5Servlet'">更新</button></td>
-</tr>
-</table><br><br><br>
 </div>
   </body>
 </html>

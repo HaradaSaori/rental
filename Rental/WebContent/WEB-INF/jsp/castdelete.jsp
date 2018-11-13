@@ -28,7 +28,7 @@ filter: alpha(opacity=60);
     <div align="center">
 <br><br><br>
 <img src ="./img/s_delete.jpg"> <font size ="3">削除確認</font><br><br><br>
-キャスト名：宗次郎<br>
+キャスト名：${castdata.castName}<br>
 本当に削除してよろしいですか？<br><br>
 <table>
 <tr>
@@ -38,9 +38,8 @@ filter: alpha(opacity=60);
 </form>
 </td>
 <td width="120">
-<form action="Userdelete" method="post">
-<input type="hidden" value="" name="loginid">
-
+<form action="CastdeleteServlet" method="post">
+<input type="hidden" value="${castdata.loginId}" name="loginId">
 <div align="center"><input type="submit" class="btn btn-info" name = "submit" value="OK"></div>
 </form>
 </td></tr></table>

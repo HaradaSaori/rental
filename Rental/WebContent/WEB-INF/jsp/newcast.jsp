@@ -30,15 +30,22 @@ filter: alpha(opacity=60);
   </head>
   <body>
     <jsp:include page="/baselayout/header.jsp" />
+     	<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
 <div align="center">
-<br><br><br><br><form class="form-signin">
+<br><br><br><br><form class="form-signin" action="NewCastServlet" method="post">
 <table>
 <tr><td>
 </td></tr>
+<tr><td>ID：</td>
+ <td><input class="form-control" type="text" name="loginId"></td></tr>
  <tr><td>キャスト名：</td>
- <td><input class="form-control" type="text" name="name"></td></tr>
+ <td><input class="form-control" type="text" name="castName"></td></tr>
   <tr><td>性別：</td>
- <td><input class="form-control" type="text" name="f"></td></tr>
+ <td><input class="form-control" type="text" name="gender"></td></tr>
   <tr><td>人年齢：</td>
  <td><input class="form-control" type="text" name="age"></td></tr>
   <tr><td>得意な化け術：</td>

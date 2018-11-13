@@ -16,7 +16,8 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
   <style type="text/css">
-  table {
+
+ table {
 width: 400px;
     border-collapse: separate;
     border-spacing: 8px 5px;
@@ -30,7 +31,7 @@ filter: alpha(opacity=60);
   </head>
   <body>
  	<jsp:include page="/baselayout/header.jsp" />
-    <div align="center">
+<div align="center">
 <br><br><br><img src ="./img/s_search.jpg"> <font size ="3">検索条件</font><br><br>
 <table>
     <tr>
@@ -56,11 +57,17 @@ filter: alpha(opacity=60);
 <img src="./img/s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>
 <br>
 <table>
- <tr align=center><c:forEach var="cast" items="${castList}">
+<tr align=center> <c:forEach var="cast" items="${castList}">
   <td>${cast.castName}<br><a href="CastDetailServlet?id=${cast.id}"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>${cast.age}代・${cast.gender}</td>
- </c:forEach></tr>
-</table><br><br><br>
-</div>
+  <br>${cast.age}代・${cast.gender}
+  <c:choose>
+  <c:when test="${userInfo.loginId == 'admin'}">
+<button type="button" class="btn btn-danger" onclick="location.href='CastdeleteServlet?id=${cast.id}'">削除</button>
+<button type="button" class="btn btn-info" onclick="location.href='CastF5Servlet?id=${cast.id}'">更新</button>
+</c:when></c:choose>
+ </td> </c:forEach>
+</tr>
+</table>
+</div><br><br><br>
   </body>
 </html>

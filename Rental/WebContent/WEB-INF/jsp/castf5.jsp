@@ -30,23 +30,30 @@ filter: alpha(opacity=60);
   </head>
   <body>
    <jsp:include page="/baselayout/header.jsp" />
+       	<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
 <div align="center">
-<br><br><br><br><form class="form-signin">
+<br><br><br><br><form class="form-signin"  action="CastF5Servlet" method="post">
+<input type="hidden" value="${castdata.loginId}" name="loginId">
 <table>
-<tr><td>
-</td></tr>
+<tr><td>ID：</td>
+<td>${castdata.loginId}
+</td></tr><tr><td><br></td></tr>
  <tr><td>キャスト名：</td>
- <td><input class="form-control" type="text" name="name"></td></tr>
+ <td><input class="form-control" type="text" name="castName" value="${castdata.castName}"></td></tr>
   <tr><td>性別：</td>
- <td><input class="form-control" type="text" name="f"></td></tr>
+ <td><input class="form-control" type="text" name="gender" value="${castdata.gender}"></td></tr>
   <tr><td>人年齢：</td>
- <td><input class="form-control" type="text" name="age"></td></tr>
+ <td><input class="form-control" type="text" name="age" value="${castdata.age}"></td></tr>
   <tr><td>得意な化け術：</td>
- <td><input class="form-control" type="text" name="bake"></td></tr>
+ <td><input class="form-control" type="text" name="bake" value="${castdata.bake}"></td></tr>
   <tr><td>一言：</td>
- <td><input class="form-control" type="text" name="comment"></td></tr>
+ <td><input class="form-control" type="text" name="comment" value="${castdata.comment}"></td></tr>
    <tr><td>レンタル金額：</td>
- <td><input class="form-control" type="text" name="price"></td></tr>
+ <td><input class="form-control" type="text" name="price" value="${castdata.price}"></td></tr>
 </table><br>
 <input type="submit" class="btn btn-light" value="情報の更新"></form>
 </div>

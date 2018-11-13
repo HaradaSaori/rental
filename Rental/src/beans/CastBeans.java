@@ -7,6 +7,7 @@ package beans;
  */
 public class CastBeans{
 	private int id;
+	private String loginId;
 	private String castName;
 	private String gender;
 	private int age;
@@ -27,6 +28,17 @@ public class CastBeans{
 		this.bake = bake;
 		this.comment = comment;
 		this.price = price;
+	}
+		//
+		public CastBeans(int id,String loginId,String castName,int age,String gender,String bake,String comment,int price) {
+			this.id = id;
+			this.loginId = loginId;
+			this.castName = castName;
+			this.age = age;
+			this.gender = gender;
+			this.bake = bake;
+			this.comment = comment;
+			this.price = price;
 	}
 
 
@@ -84,6 +96,14 @@ public class CastBeans{
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 }
