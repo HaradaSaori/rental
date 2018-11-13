@@ -1,8 +1,5 @@
 package beans;
 
-import java.util.Date;
-
-
 /**
  * レビューデータ
  *
@@ -11,16 +8,23 @@ import java.util.Date;
 public class ReviewBeans{
 	private int revId;
 	private int userId;
+	private String userName;
 	private int castId;
 	private String revC;
-	private Date revDate;
 
 
 	// コンストラクタ
 	public ReviewBeans() {
 	}
 
-
+	//
+	public ReviewBeans(int revId,int userId,String userName,int castId,String revC) {
+		this.revId = revId;
+		this.userId = userId;
+		this.userName = userName;
+		this.castId = castId;
+		this.revC = revC;
+	}
 
 
 	public int getRevId() {
@@ -62,13 +66,13 @@ public class ReviewBeans{
 		this.revC = revC;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
 
-	public Date getRevDate() {
-		return revDate;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 
-	public void setRevDate(Date revDate) {
-		this.revDate = revDate;
-	}
 }

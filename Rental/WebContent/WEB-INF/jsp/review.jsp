@@ -29,14 +29,25 @@ filter: alpha(opacity=60);
   </head>
   <body>
   <jsp:include page="/baselayout/header.jsp" />
+      	<c:if test="${errMsg != null}" >
+	    <div class="alert alert-danger" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
   <div align="center">
   <img src="./img/s_review_t.jpg">  レビュー投稿<br><br>
+  <input type="hidden" value="${castdata.castId}" name="castId">
+  <input type="hidden" value="${userdata.userId}" name="userId">
+<form class="form-signin" action="ReviewServlet" method="post">
 <table>
+<tr><td>
+キャスト名 : ${castdata.castName}<br>
+投稿者　　 : ${userdata.userName}</td></tr>
 <tr>
 <td>内容</td>
 <td><textarea class="form-control" name="comment" rows="5" cols="80"></textarea></td></tr>
 </table><br><br>
-<input type="submit" class="btn btn-success" name = "submit" value="投稿">
+<input type="submit" class="btn btn-success" name = "submit" value="投稿"></form>
   </div>
   </body>
 </html>

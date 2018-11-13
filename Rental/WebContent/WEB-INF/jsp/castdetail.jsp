@@ -49,22 +49,8 @@ filter: alpha(opacity=60);
 レンタル金額(一日)：￥${castdata.price}<br>
 <button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet'">レンタルする！</button><br><br><br><br>
 <br>
-<img src="./img/s_review.jpg">  <font size = "4">お客様の声</font>
-<div class="inline_box">
-<table>
- <tr><td width="180" valign="top">東京都 20代女性：</td>
- <td  width="380">結婚式で親戚役をお願いしました。<br>
- 実の父より号泣していてちょっと気まずかったです。</td></tr>
- <tr><td><hr></td><td><hr></td></tr>
-<tr><td width="180" valign="top">埼玉県 20代男性：</td>
- <td  width="380">彼女のお父さんに結婚の申し込みに行く練習にレンタルさせてもらいました。<br>
- 厳格な父親を演じてほしかったのですが、優しくてすぐOKしてしまうのであまり練習になりませんでした。</td></tr>
-<tr><td><hr></td><td><hr></td></tr>
-<tr><td width="180" valign="top">東京都 50代男性：</td>
- <td  width="380">仕事の愚痴を同年代に聞いてほしくて呼びました。<br>
- とっても熱心に話を聞いてくれ、最後には二人で泣き笑いでした。<br>
- ありがとう！我が友よ。</td></tr>
-</table></div>
+<img src="./img/s_review.jpg">  <font size = "4">お客様の声</font><br><br>
+<iframe src="ReviewComServlet" width="500" height="400" frameborder="no"></iframe><br><br>
 </div>
   </body>
 </html>

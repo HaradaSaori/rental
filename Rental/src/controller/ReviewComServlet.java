@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.CastBeans;
-import dao.CastDao;
+import beans.ReviewBeans;
+import dao.ReviewDao;
 
 /**
- * Servlet implementation class CastDetailServlet
+ * Servlet implementation class ReviewComServlet
  */
-@WebServlet("/CastDetailServlet")
-public class CastDetailServlet extends HttpServlet {
+@WebServlet("/ReviewComServlet")
+public class ReviewComServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CastDetailServlet() {
+    public ReviewComServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,31 +33,25 @@ public class CastDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// ログインセッションがない場合、ログイン画面にリダイレクトさせる
 		HttpSession session = request.getSession();
 		if (null == session.getAttribute("userInfo")){
 			// ログイン画面へ遷移(リダイレクト).
-			response.sendRedirect( "IndexServlet" );
+			response.sendRedirect( "LoginServlet" );
 			return;
 			}
 
-		// URLからGETパラメータとしてIDを受け取る
-		String id = request.getParameter("id");
+		// ユーザ一覧情報を取得
+				ReviewDao reviewDao = new ReviewDao();
+				List<ReviewBeans> reviewList = reviewDao.review();
 
-		// 確認用：idをコンソールに出力
-	       System.out.println(id);
+				// リクエストスコープにユーザ一覧情報をセット
+				request.setAttribute("reviewList", reviewList);
 
-
-		//idを引数にして、idに紐づくユーザ情報を出力する
-	       CastDao castDao = new CastDao();
-		   CastBeans castdata = castDao.castData(id);
-
-		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
-		   request.setAttribute("castdata",castdata);
-
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castdetail.jsp");
-			dispatcher.forward(request, response);
+				// ユーザ一覧のjspにフォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reviewcom.jsp");
+				dispatcher.forward(request, response);
 	}
 
 	/**

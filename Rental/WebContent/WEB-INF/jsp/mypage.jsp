@@ -67,7 +67,9 @@ filter: alpha(opacity=60);
  <tr align=center>
   <td>[宗次郎]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
   <br>2018/11/01<br>
-  <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet'">レビューを書く</button></td>
+  <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet?id=${user.id}'">レビューを書く</button>
+  </td>
+
   <td>[ぽん太]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
   <br>2018/08/10<br>
   <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet'">レビューを書く</button></td>
