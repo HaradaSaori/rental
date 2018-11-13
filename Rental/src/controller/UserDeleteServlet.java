@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.UserBeans;
+import dao.UserDao;
+
 /**
  * Servlet implementation class UserDeleteServlet
  */
@@ -37,17 +40,42 @@ public class UserDeleteServlet extends HttpServlet {
 			return;
 			}
 
-		// フォワード
+		// URLからGETパラメータとしてIDを受け取る
+		String id = request.getParameter("id");
+
+		// 確認用：idをコンソールに出力
+	       System.out.println(id);
+
+
+		//idを引数にして、idに紐づくユーザ情報を出力する
+	       UserDao userDao = new UserDao();
+		   UserBeans userdata = userDao.userData(id);
+
+		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
+		   request.setAttribute("userdata",userdata);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");
 		dispatcher.forward(request, response);
-
 	}
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+
+		// リクエストパラメータの入力項目を取得
+		String loginId = request.getParameter("loginId");
+
+		UserDao userDao = new UserDao();
+		userDao.Userdelete(loginId);
+
+		// ユーザ一覧のサーブレットにリダイレクト
+		response.sendRedirect("IndexServlet");
 	}
+
 
 }

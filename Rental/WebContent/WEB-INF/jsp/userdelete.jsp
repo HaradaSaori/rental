@@ -28,7 +28,7 @@ filter: alpha(opacity=60);
     <div align="center">
 <br><br><br>
 <img src ="./img/s_delete.jpg"> <font size ="3">退会確認</font><br><br><br>
-ログインID : ${user.loginId}<br>
+ログインID : ${userdata.loginId}<br>
 本当に退会してよろしいですか？<br><br>
 <table>
 <tr>
@@ -38,10 +38,10 @@ filter: alpha(opacity=60);
 </form>
 </td>
 <td width="120">
-<form action="Userdelete" method="post">
-<input type="hidden" value="" name="loginid">
-
-<div align="center"><input type="submit" class="btn btn-info" name = "submit" value="OK"></div>
+<form action="UserDeleteServlet" method="post">
+<div align="center">
+      <input type="hidden" value="${userdata.loginId}" name="loginId">
+<input type="submit" class="btn btn-info" name = "submit" value="OK"></div>
 </form>
 </td></tr></table>
 </div>

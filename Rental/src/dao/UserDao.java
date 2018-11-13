@@ -233,7 +233,7 @@ public void UserF5pass(String userName, String phone, String loginId)throws SQLE
         conn = DBManager.getConnection();
 
      // UPDATE文を準備
-        String sql = "UPDATE user SET user_name = ?,phone = ?, WHERE login_id = ?";
+        String sql = "UPDATE user SET user_name = ?,phone = ? WHERE login_id = ?";
 
      // UPDATEを実行
         PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -247,6 +247,38 @@ public void UserF5pass(String userName, String phone, String loginId)throws SQLE
     } catch (SQLException e) {
         e.printStackTrace();
         throw e;
+
+    } finally {
+        // データベース切断
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+}
+
+public void Userdelete(String loginId) {
+    Connection conn = null;
+    try {
+        // データベースへ接続
+        conn = DBManager.getConnection();
+
+     // DELETE文を準備
+        String sql = "DELETE FROM user WHERE login_id = ?";
+
+     // DELETEを実行
+        PreparedStatement pStmt = conn.prepareStatement(sql);
+        pStmt.setString(1, loginId);
+        pStmt.executeUpdate();
+
+        pStmt.close();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
 
     } finally {
         // データベース切断

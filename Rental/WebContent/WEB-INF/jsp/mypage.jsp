@@ -61,8 +61,6 @@ filter: alpha(opacity=60);
     </tr>
 </table><br>
 <input type="submit" class="btn btn-light" value="情報の更新"></form><br>
-<table>
-    <tr><td><div align="right"><a href="UserDeleteServlet">退会する</a></div></td></tr></table><br><br>
 <img src="./img/line.jpg">
 <br><br><br><font size = "5">レンタル履歴</font><br><br>
 <table>
