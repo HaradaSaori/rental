@@ -1,5 +1,6 @@
 package beans;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -9,49 +10,56 @@ import java.util.Date;
  *
  */
 public class ReserveBeans{
-	private int resId;
-	private int userId;
-	private int castId;
+	private int id;
+	private String userId;
+	private String userName;
+	private String loginId;
+	private String castName;
 	private Date rDate;
 	private String place;
 	private String resCom;
-	private Date resDate;
 
 
 	// コンストラクタ
 	public ReserveBeans() {
 	}
 
+	public ReserveBeans(int id,String loginId,String castName) {
+		this.id = id;
+		this.loginId = loginId;
+		this.castName = castName;
+}
 
 
 
-	public int getResId() {
-		return resId;
+
+	public int getId() {
+		return id;
 	}
 
 
-	public void setResId(int resId) {
-		this.resId = resId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
 
-	public int getCastId() {
-		return castId;
+	public String getLoginId() {
+		return loginId;
 	}
 
 
-	public void setCastId(int castId) {
-		this.castId = castId;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 
@@ -62,6 +70,11 @@ public class ReserveBeans{
 
 	public void setrDate(Date rDate) {
 		this.rDate = rDate;
+	}
+
+	public String getFormatDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+		return sdf.format(rDate);
 	}
 
 
@@ -85,12 +98,32 @@ public class ReserveBeans{
 	}
 
 
-	public Date getResDate() {
-		return resDate;
+
+
+	public String getUserName() {
+		return userName;
 	}
 
 
-	public void setResDate(Date resDate) {
-		this.resDate = resDate;
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+
+
+
+
+	public String getCastName() {
+		return castName;
+	}
+
+
+
+
+	public void setCastName(String castName) {
+		this.castName = castName;
+	}
+
+
 }

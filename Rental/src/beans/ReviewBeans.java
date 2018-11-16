@@ -7,9 +7,9 @@ package beans;
  */
 public class ReviewBeans{
 	private int revId;
-	private int userId;
+	private String userId;
 	private String userName;
-	private int castId;
+	private String castId;
 	private String revC;
 
 
@@ -18,7 +18,7 @@ public class ReviewBeans{
 	}
 
 	//
-	public ReviewBeans(int revId,int userId,String userName,int castId,String revC) {
+	public ReviewBeans(int revId,String userId,String userName,String castId,String revC) {
 		this.revId = revId;
 		this.userId = userId;
 		this.userName = userName;
@@ -37,22 +37,22 @@ public class ReviewBeans{
 	}
 
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
 
-	public int getCastId() {
+	public String getCastId() {
 		return castId;
 	}
 
 
-	public void setCastId(int castId) {
+	public void setCastId(String castId) {
 		this.castId = castId;
 	}
 

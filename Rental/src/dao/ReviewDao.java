@@ -28,7 +28,7 @@ public class ReviewDao {
 
 	        // SELECT文を準備
 	        // TODO: 未実装：管理者以外を取得するようSQLを変更する
-	        String sql = "SELECT * FROM review INNER JOIN cast_tanuki ON review.cast_id = cast_tanuki.cast_id INNER JOIN user ON review.user_id = user.user_id";
+	        String sql = "SELECT * FROM review INNER JOIN cast_tanuki ON review.cast_id = cast_tanuki.login_id INNER JOIN user ON review.user_id = user.login_id";
 
 	         // SELECTを実行し、結果表を取得
 	        Statement stmt = conn.createStatement();
@@ -38,9 +38,9 @@ public class ReviewDao {
 	        // Userインスタンスに設定し、ArrayListインスタンスに追加
 	        while (rs.next()) {
 	            int revId = rs.getInt("rev_id");
-	            int userId = rs.getInt("user_id");
+	            String userId = rs.getString("user_id");
 	            String userName = rs.getString("user_name");
-	            int castId = rs.getInt("cast_id");
+	            String castId = rs.getString("cast_id");
 	            String revC = rs.getString("rev_c");
 
 	            ReviewBeans review = new ReviewBeans(revId,userId,userName,castId,revC);
@@ -64,19 +64,19 @@ public class ReviewDao {
 	    return reviewList;
 	}
 
-	public void reviewCom(int castId,int userId,String revC) throws SQLException{
+	public void reviewCom(String castId,String userId,String revC) throws SQLException{
 	    Connection conn = null;
 	    try {
 	        // データベースへ接続
 	        conn = DBManager.getConnection();
 
 	     // INSERT文を準備
-	        String sql = "INSERT INTO review(cast_id,user_id,revC) VALUES(?,?,?)";
+	        String sql = "INSERT INTO review(cast_id,user_id,rev_c) VALUES(?,?,?)";
 
 	     // INSERTを実行
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
-	        pStmt.setInt(1, castId);
-	        pStmt.setInt(2, userId);
+	        pStmt.setString(1, castId);
+	        pStmt.setString(2, userId);
 	        pStmt.setString(3, revC);
 	        pStmt.executeUpdate();
 

@@ -37,7 +37,7 @@ public class CastF5Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (null == session.getAttribute("userInfo")){
 			// ログイン画面へ遷移(リダイレクト).
-			response.sendRedirect( "IndexServlet" );
+			response.sendRedirect( "LoginServlet" );
 			return;
 			}
 

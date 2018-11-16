@@ -36,16 +36,31 @@ filter: alpha(opacity=60);
 	</c:if>
   <div align="center">
   <img src="./img/s_review_t.jpg">  レビュー投稿<br><br>
-  <input type="hidden" value="${castdata.castId}" name="castId">
-  <input type="hidden" value="${userdata.userId}" name="userId">
 <form class="form-signin" action="ReviewServlet" method="post">
 <table>
 <tr><td>
-キャスト名 : ${castdata.castName}<br>
-投稿者　　 : ${userdata.userName}</td></tr>
+キャスト名:</td>
+<td>
+<select name="castId">
+<option value="sojiro">宗次郎</option>
+<option value="ponta">ぽん太</option>
+<option value="hanako">花子</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>投稿者</td>
+<td>
+<select name="userId">
+<option value="admin">管理者</option>
+<option value="harada">原田沙織</option>
+<option value="satou">佐藤一郎</option>
+</select>
+</td>
+</tr>
 <tr>
 <td>内容</td>
-<td><textarea class="form-control" name="comment" rows="5" cols="80"></textarea></td></tr>
+<td><textarea class="form-control" name="revC" rows="5" cols="80"></textarea></td></tr>
 </table><br><br>
 <input type="submit" class="btn btn-success" name = "submit" value="投稿"></form>
   </div>

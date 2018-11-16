@@ -53,20 +53,10 @@ public class ReviewServlet extends HttpServlet {
 	     request.setCharacterEncoding("UTF-8");
 
 			// リクエストパラメータの入力項目を取得
-			int castId = Integer.parseInt(request.getParameter("castId"));
-			int userId = Integer.parseInt(request.getParameter("userId"));
+			String castId = request.getParameter("castId");
+			String userId = request.getParameter("userId");
 			String revC = request.getParameter("revC");
 
-
-
-			if(revC.isEmpty())
-	     {
-				request.setAttribute("errMsg", "必須項目を入力してください");
-
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/review.jsp");
-				dispatcher.forward(request, response);
-				return;
-	     }
 
 
 			ReviewDao reviewDao = new ReviewDao();
@@ -82,7 +72,7 @@ public class ReviewServlet extends HttpServlet {
 				return;
 			}
 			// ユーザ一覧のサーブレットにリダイレクト
-			response.sendRedirect("CastDetailServlet");
+			response.sendRedirect("MypageServlet");
 
 	}
 
