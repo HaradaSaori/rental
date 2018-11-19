@@ -59,6 +59,26 @@ public class CastListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//検索処理全般
+
+		// ユーザ一覧情報を取得
+		// リクエストパラメータの文字コードを指定
+        request.setCharacterEncoding("UTF-8");
+
+		// リクエストパラメータの入力項目を取得
+		String castName = request.getParameter("cast_name");
+		String gender = request.getParameter("gender");
+		int age = Integer.parseInt(request.getParameter("age"));
+
+		CastDao castDao = new CastDao();
+		List<CastBeans> castList = castDao.find(castName,gender,age);
+
+		// リクエストスコープにユーザ一覧情報をセット
+		request.setAttribute("castList", castList);
+
+		// ユーザ一覧のjspにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castlist.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

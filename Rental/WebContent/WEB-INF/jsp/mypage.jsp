@@ -61,23 +61,7 @@ filter: alpha(opacity=60);
     </tr>
 </table><br>
 <input type="submit" class="btn btn-light" value="情報の更新"></form><br>
-<img src="./img/line.jpg">
-<br><br><br><font size = "5">レンタル履歴</font><br><br>
-<table>
- <tr align=center>
-  <td>[宗次郎]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>2018/11/01<br>
-  <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet?id=${user.id}'">レビューを書く</button>
-  </td>
-
-  <td>[ぽん太]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>2018/08/10<br>
-  <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet'">レビューを書く</button></td>
-  <td>[小春]<br><a href="CastDetailServlet"><img src=./img/s_tanuki_profile.jpg></a>
-  <br>2017/12/25<br>
-  <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet'">レビューを書く</button></td>
- </tr>
-</table><br><br><br>
+<br><br><br>
 </div>
   </body>
 </html>

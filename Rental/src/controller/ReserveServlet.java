@@ -42,12 +42,12 @@ public class ReserveServlet extends HttpServlet {
 			}
 
 
+
 		// URLからGETパラメータとしてIDを受け取る
 				String id = request.getParameter("id");
 
 				// 確認用：idをコンソールに出力
 			       System.out.println(id);
-
 
 				//idを引数にして、idに紐づくユーザ情報を出力する
 			       ReserveDao reserveDao = new ReserveDao();

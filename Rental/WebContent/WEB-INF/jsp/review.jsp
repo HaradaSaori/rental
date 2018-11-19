@@ -37,25 +37,19 @@ filter: alpha(opacity=60);
   <div align="center">
   <img src="./img/s_review_t.jpg">  レビュー投稿<br><br>
 <form class="form-signin" action="ReviewServlet" method="post">
+<input type="hidden" value="${castdata.loginId}" name="castId">
+<input type="hidden" value="${userInfo.loginId}" name="userId">
 <table>
 <tr><td>
 キャスト名:</td>
 <td>
-<select name="castId">
-<option value="sojiro">宗次郎</option>
-<option value="ponta">ぽん太</option>
-<option value="hanako">花子</option>
-</select>
+${castdata.castName}
 </td>
 </tr>
 <tr>
 <td>投稿者</td>
 <td>
-<select name="userId">
-<option value="admin">管理者</option>
-<option value="harada">原田沙織</option>
-<option value="satou">佐藤一郎</option>
-</select>
+${userInfo.userName}
 </td>
 </tr>
 <tr>

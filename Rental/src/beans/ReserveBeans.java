@@ -30,6 +30,15 @@ public class ReserveBeans{
 		this.castName = castName;
 }
 
+	public ReserveBeans(String userId,String userName,String loginId,String castName,Date rDate,String place,String resCom) {
+		this.userId = userId;
+		this.userName = userName;
+		this.loginId = loginId;
+		this.castName = castName;
+		this.rDate = rDate;
+		this.place = place;
+		this.resCom = resCom;
+}
 
 
 

@@ -55,11 +55,11 @@ public class MypageServlet extends HttpServlet {
 		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
 		   request.setAttribute("userdata",userdata);
 
-
-
+			// ユーザ一覧のjspにフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
 			dispatcher.forward(request, response);
-	}
+		}
+
 
 
 	/**

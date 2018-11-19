@@ -223,5 +223,58 @@ public void CastF5(String castName, int age, String gender, String bake,String c
 	        }
 	    }
 	}
+    public List<CastBeans> find(String CastName,String Gender,int Age) {
+        Connection conn = null;
+        List<CastBeans> castList = new ArrayList<CastBeans>();
 
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            String sql = "SELECT * FROM cast_tanuki WHERE cast_name != 'admin' ";
+            if(!(CastName.isEmpty())) {
+            	sql += "AND cast_name = '"+ CastName +"'";
+           }
+            if(!(Gender.isEmpty())) {
+            	sql += "AND gender = '"+ Gender +"'";
+           }
+           if(!(Age < 1)) {
+           	sql += "AND age = "+ Age ;
+          }
+             // SELECTを実行し、結果表を取得
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+
+            // 結果表に格納されたレコードの内容を
+            // Userインスタンスに設定し、ArrayListインスタンスに追加
+            while (rs.next()) {
+                String castName = rs.getString("cast_name");
+                int age = rs.getInt("age");
+                String gender = rs.getString("gender");
+
+
+                CastBeans cast = new CastBeans(castName,gender,age);
+
+                castList.add(cast);
+                }
+
+            } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+                }
+        return castList;
+
+        }
 }

@@ -42,11 +42,11 @@ public class ReviewComServlet extends HttpServlet {
 			return;
 			}
 
-		// ユーザ一覧情報を取得
+		// 一覧情報を取得
 				ReviewDao reviewDao = new ReviewDao();
 				List<ReviewBeans> reviewList = reviewDao.review();
 
-				// リクエストスコープにユーザ一覧情報をセット
+				// リクエストスコープに一覧情報をセット
 				request.setAttribute("reviewList", reviewList);
 
 				// ユーザ一覧のjspにフォワード

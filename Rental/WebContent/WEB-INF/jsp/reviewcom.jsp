@@ -31,13 +31,15 @@ filter: alpha(opacity=60);
 </head>
 <body>
     <div align="center">
+    <c:choose>
+    <c:when test="${cast.id == cast.id}">
     		<c:forEach var="review" items="${reviewList}">
 						<table>
 							<tr>
 								<td height="50" valign="top">${review.revC}(${review.userName})</td>
 							</tr>
 						</table>
-		</c:forEach>
+		</c:forEach></c:when></c:choose>
 		<br>
 		<br>
 

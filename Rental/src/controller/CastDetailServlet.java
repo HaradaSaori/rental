@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.CastBeans;
+import beans.ReviewBeans;
 import dao.CastDao;
+import dao.ReviewDao;
 
 /**
  * Servlet implementation class CastDetailServlet
@@ -53,6 +56,13 @@ public class CastDetailServlet extends HttpServlet {
 
 		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
 		   request.setAttribute("castdata",castdata);
+
+			// 一覧情報を取得
+			ReviewDao reviewDao = new ReviewDao();
+			List<ReviewBeans> reviewList = reviewDao.review();
+
+			// リクエストスコープに一覧情報をセット
+			request.setAttribute("reviewList", reviewList);
 
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castdetail.jsp");

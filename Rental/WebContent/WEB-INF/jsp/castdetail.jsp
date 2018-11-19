@@ -50,7 +50,19 @@ filter: alpha(opacity=60);
 <button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet?id=${castdata.id}'">レンタルする！</button><br><br><br><br>
 <br>
 <img src="./img/s_review.jpg">  <font size = "4">お客様の声</font><br><br>
-<iframe src="ReviewComServlet" width="500" height="400" frameborder="no"></iframe><br><br>
+	<c:forEach var="review" items="${reviewList}">
+    <c:choose>
+    <c:when test="${review.castId == castdata.loginId}">
+
+						<table>
+							<tr>
+								<td width="400"  valign="top">${review.revC}(${review.userName})</td>
+							</tr>
+							</table>
+						<br><img src="./img/s_line.jpg">
+		</c:when></c:choose></c:forEach><br><br>
+		  <button type="button" class="btn btn-success" onclick="location.href='ReviewServlet?id=${castdata.id}'">レビューを書く</button>
+		<br>
 </div>
   </body>
 </html>

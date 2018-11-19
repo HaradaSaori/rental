@@ -33,25 +33,30 @@ filter: alpha(opacity=60);
  	<jsp:include page="/baselayout/header.jsp" />
 <div align="center">
 <br><br><br><img src ="./img/s_search.jpg"> <font size ="3">検索条件</font><br><br>
+<form class="form-signin" method="post" action="#">
 <table>
     <tr>
+      <th>キャスト名</th>
+      <td>
+      <input type="text" name="cast_name" class="form-control">
+      </td>
+    </tr>
+    <tr>
       <th>性別</th>
-      <td><input type="radio" value="男">男 <input type="radio" value="女">女</td>
+      <td><input type="radio" name="gender" value="男">男 <input type="radio" name="gender" value="女">女</td>
     </tr>
     <tr>
       <th>人年齢</th>
-      <td><input class="form-control" type="text" name="age" ></td>
+      <td>
+      <input type="text" name="age" class="form-control" style="text-align: right;" placeholder="代">
+      </td>
     </tr>
     <tr>
-      <th>空きスケジュール</th>
-      <td><input class="form-control" type="text" name="schedule" ></td>
-      </tr>
-      <tr>
       <th></th><td>
       <div align ="right"><input type="submit" class="btn btn-light" value="検索"></div>
       </td>
     </tr>
-</table><br><a href="NewCastServlet">キャスト登録</a><br><br>
+</table></form><br><a href="NewCastServlet">キャスト登録</a><br><br>
 <img src="./img/line.jpg">
 <br><br><br>
 <img src="./img/s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>
