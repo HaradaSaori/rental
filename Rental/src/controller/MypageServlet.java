@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ReserveBeans;
 import beans.UserBeans;
+import dao.ReserveDao;
 import dao.UserDao;
 
 /**
@@ -54,6 +57,15 @@ public class MypageServlet extends HttpServlet {
 
 		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
 		   request.setAttribute("userdata",userdata);
+
+
+			//idを引数にして、idに紐づくユーザ情報を出力する
+		       ReserveDao reserveDao = new ReserveDao();
+		       List<ReserveBeans> reserveList = reserveDao.find(id);
+
+			   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
+			   request.setAttribute("reserveList",reserveList);
+
 
 			// ユーザ一覧のjspにフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");

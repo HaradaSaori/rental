@@ -78,7 +78,6 @@ public class ReserveServlet extends HttpServlet {
 		String place = request.getParameter("place");
 		String resCom = request.getParameter("resCom");
 
-
 		ReserveDao reserveDao = new ReserveDao();
 
 		if(rDate.isEmpty() || place.isEmpty() || resCom.isEmpty())

@@ -62,6 +62,18 @@ filter: alpha(opacity=60);
 </table><br>
 <input type="submit" class="btn btn-light" value="情報の更新"></form><br>
 <br><br><br>
+<font size = "5">レンタル履歴</font><br><br>
+
+<table>
+ <tr align=center>
+<c:forEach var="reserve" items="${reserveList}">
+ <td><input type="hidden" value="${reserve.id}" name="id">
+  ${reserve.castName} (${reserve.formatDate})<br>
+  ${reserve.resCom} / ${reserve.place}
+  <img src=./img/s_tanuki_profile.jpg>
+  </td></c:forEach>
+ </tr>
+</table>
 </div>
   </body>
 </html>

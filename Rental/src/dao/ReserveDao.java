@@ -96,7 +96,7 @@ public class ReserveDao {
     }
 
 
-    public List<ReserveBeans> find(String userId) {
+    public List<ReserveBeans> find(String id) {
         Connection conn = null;
         List<ReserveBeans> reserveList = new ArrayList<ReserveBeans>();
 
@@ -105,11 +105,11 @@ public class ReserveDao {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "SELECT user.user_name,reserve.cast_id,cast_tanuki.cast_name,r_date,place,res_com FROM reserve INNER JOIN cast_tanuki ON reserve.cast_id=cast_tanuki.login_id INNER JOIN user ON reserve.user_id=user.login_id WHERE reserve.user_id = ?";
+            String sql = "SELECT user.user_name,reserve.cast_id,cast_tanuki.cast_name,r_date,place,res_com FROM reserve INNER JOIN cast_tanuki ON reserve.cast_id=cast_tanuki.login_id INNER JOIN user ON reserve.userid_i=user.user_id WHERE reserve.userid_i = ?";
 
              // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
-    		pStmt.setString(1, userId);
+    		pStmt.setString(1, id);
     		ResultSet rs = pStmt.executeQuery();
 
     		ReserveBeans reserve  = null;
@@ -123,7 +123,7 @@ public class ReserveDao {
                 Date rDate = rs.getDate("r_date");
                 String place = rs.getString("place");
                 String resCom = rs.getString("res_com");
-                reserve = new ReserveBeans(userId,userName, castId, castName,rDate,place,resCom);
+                reserve = new ReserveBeans(id,userName, castId, castName,rDate,place,resCom);
 
                 reserveList.add(reserve);
             }

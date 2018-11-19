@@ -13,6 +13,7 @@ public class ReserveBeans{
 	private int id;
 	private String userId;
 	private String userName;
+	private int castId;
 	private String loginId;
 	private String castName;
 	private Date rDate;
@@ -132,6 +133,14 @@ public class ReserveBeans{
 
 	public void setCastName(String castName) {
 		this.castName = castName;
+	}
+
+	public int getCastId() {
+		return castId;
+	}
+
+	public void setCastId(int castId) {
+		this.castId = castId;
 	}
 
 

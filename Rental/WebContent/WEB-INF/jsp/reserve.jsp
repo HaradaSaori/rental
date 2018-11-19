@@ -35,7 +35,6 @@ width: 400px;
 <img src ="./img/s_tanukidetail.jpg"> <font size ="3">レンタル申し込み</font><br><br><br>
 <form class="form-signin"  action="ReserveServlet" method="post">
 <input type="hidden" value="${reservedata.loginId}" name="castId">
-<input type="hidden" value="${userInfo.loginId}" name="userId">
 <table>
 <tr>
 <td>
