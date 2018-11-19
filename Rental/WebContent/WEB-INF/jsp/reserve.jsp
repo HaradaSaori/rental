@@ -35,6 +35,7 @@ width: 400px;
 <img src ="./img/s_tanukidetail.jpg"> <font size ="3">レンタル申し込み</font><br><br><br>
 <form class="form-signin"  action="ReserveServlet" method="post">
 <input type="hidden" value="${reservedata.loginId}" name="castId">
+<input type="hidden" value="${user.loginId}" name="userId">
 <table>
 <tr>
 <td>
@@ -49,11 +50,7 @@ ${reservedata.castName}
 ユーザ情報
 </td>
 <td>
-<select name="userId">
-<option value="admin">管理者</option>
-<option value="harada">原田沙織</option>
-<option value="satou">佐藤一郎</option>
-</select>
+${userInfo.userName}
 </td>
 </tr>
 <tr>

@@ -41,6 +41,7 @@ public class ReserveServlet extends HttpServlet {
 			return;
 			}
 
+
 		// URLからGETパラメータとしてIDを受け取る
 				String id = request.getParameter("id");
 
