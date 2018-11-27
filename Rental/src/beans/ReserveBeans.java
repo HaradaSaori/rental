@@ -41,6 +41,14 @@ public class ReserveBeans{
 		this.resCom = resCom;
 }
 
+	public ReserveBeans(String userId,String loginId,String castName,Date rDate,String place,String resCom) {
+		this.userId = userId;
+		this.loginId = loginId;
+		this.castName = castName;
+		this.rDate = rDate;
+		this.place = place;
+		this.resCom = resCom;
+}
 
 
 	public int getId() {

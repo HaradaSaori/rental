@@ -23,6 +23,7 @@ public class ReserveDao {
 	        // データベースへ接続
 	        conn = DBManager.getConnection();
 
+
 	     // INSERT文を準備
 	        String sql = "INSERT INTO reserve(cast_id,user_id,r_date,place,res_com) VALUES(?,?,?,?,?)";
 
@@ -105,7 +106,7 @@ public class ReserveDao {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "SELECT user.user_name,reserve.cast_id,cast_tanuki.cast_name,r_date,place,res_com FROM reserve INNER JOIN cast_tanuki ON reserve.cast_id=cast_tanuki.login_id INNER JOIN user ON reserve.userid_i=user.user_id WHERE reserve.userid_i = ?";
+            String sql = "SELECT reserve.cast_id,cast_tanuki.cast_name,r_date,place,res_com FROM reserve INNER JOIN cast_tanuki ON reserve.cast_id=cast_tanuki.login_id WHERE r_date < now() AND reserve.user_id = ? ORDER BY r_date DESC";
 
              // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -117,13 +118,12 @@ public class ReserveDao {
             // 結果表に格納されたレコードの内容を
             // Userインスタンスに設定し、ArrayListインスタンスに追加
             while (rs.next()) {
-                String userName = rs.getString("user.user_name");
                 String castId = rs.getString("reserve.cast_id");
                 String castName = rs.getString("cast_tanuki.cast_name");
                 Date rDate = rs.getDate("r_date");
                 String place = rs.getString("place");
                 String resCom = rs.getString("res_com");
-                reserve = new ReserveBeans(id,userName, castId, castName,rDate,place,resCom);
+                reserve = new ReserveBeans(id, castId, castName,rDate,place,resCom);
 
                 reserveList.add(reserve);
             }
@@ -144,5 +144,51 @@ public class ReserveDao {
         return reserveList;
     }
 
+    public List<ReserveBeans> findDate(String id) {
+        Connection conn = null;
+        List<ReserveBeans> reserveList = new ArrayList<ReserveBeans>();
+
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            String sql = "SELECT reserve.cast_id,cast_tanuki.cast_name,r_date,place,res_com FROM reserve INNER JOIN cast_tanuki ON reserve.cast_id=cast_tanuki.login_id WHERE r_date > now() AND reserve.user_id =? ORDER BY r_date";
+
+             // SELECTを実行し、結果表を取得
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+    		pStmt.setString(1, id);
+    		ResultSet rs = pStmt.executeQuery();
+
+    		ReserveBeans reserve  = null;
+
+            // 結果表に格納されたレコードの内容を
+            // Userインスタンスに設定し、ArrayListインスタンスに追加
+            while (rs.next()) {
+                String castId = rs.getString("reserve.cast_id");
+                String castName = rs.getString("cast_tanuki.cast_name");
+                Date rDate = rs.getDate("r_date");
+                String place = rs.getString("place");
+                String resCom = rs.getString("res_com");
+                reserve = new ReserveBeans(id,castId, castName,rDate,place,resCom);
+
+                reserveList.add(reserve);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+        return reserveList;
+    }
 
 }

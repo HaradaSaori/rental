@@ -15,7 +15,12 @@
     <!-- BootstrapのJS読み込み -->
     <script src="js/bootstrap.min.js"></script>
     <!-- レイアウトカスタマイズ用個別CSS -->
-  <style type="text/css">
+      <style type="text/css">
+  table {
+  width: 400px;
+    border-collapse: separate;
+    border-spacing: 8px 0px;
+}
 a:hover img{
 opacity: 0.6;
 filter: alpha(opacity=60);
@@ -24,26 +29,21 @@ filter: alpha(opacity=60);
   </style>
   </head>
   <body>
-      <jsp:include page="/baselayout/header.jsp" />
-    <div align="center">
-<br><br><br>
-<img src ="./img/s_delete.jpg"> <font size ="3">退会確認</font><br><br><br>
-ログインID : ${userInfo.loginId}<br>
-本当に退会してよろしいですか？<br><br>
+ <jsp:include page="/baselayout/header.jsp" />
+  <div align="center">
+  <img src="./img/s_reserve.jpg" /><font size ="3">  現在のご予約状況</font><br><br>
+ <c:forEach var="reserve" items="${reserveList}">
 <table>
-<tr>
-<td width="120">
-<form>
-<div align="center"><input type="button" class="btn btn-light" name = "cancel" value="キャンセル" onclick="history.back()"></div>
-</form>
-</td>
-<td width="120">
-<form action="UserDeleteServlet" method="post">
-<div align="center">
-      <input type="hidden" value="${userInfo.loginId}" name="loginId">
-<input type="submit" class="btn btn-info" name = "submit" value="OK"></div>
-</form>
-</td></tr></table>
-</div>
+ <tr align=center>
+ <td width="200"><input type="hidden" value="${reserve.id}" name="id">
+  <img src=./img/s_tanukidetail.jpg>
+  </td><td width="500">
+  ${reserve.castName} <br>(${reserve.formatDate})</td>
+  <td width="800">
+  ${reserve.resCom}  <br>${reserve.place}
+  </td></tr>
+</table><img src=./img/s_line.jpg></c:forEach>
+
+  </div>
   </body>
 </html>

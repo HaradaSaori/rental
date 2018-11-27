@@ -58,7 +58,7 @@ a:hover img {
 							</tr>
 							<tr>
 								<td><a class="btn btn-primary"
-									href="MypageServlet?id=${user.id}">詳細・更新</a></td>
+									href="MypageServlet?id=${userInfo.loginId}">詳細・更新</a></td>
 							</tr>
 						</table>
 						<br>
@@ -91,7 +91,7 @@ a:hover img {
 							</tr>
 							<tr>
 								<td><a class="btn btn-primary"
-									href="MypageServlet?id=${user.id}">詳細・更新</a></td>
+									href="MypageServlet?id=${userInfo.loginId}">詳細・更新</a></td>
 							</tr>
 						</table>
 						<br>

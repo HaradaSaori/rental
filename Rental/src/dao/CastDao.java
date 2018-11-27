@@ -223,7 +223,7 @@ public void CastF5(String castName, int age, String gender, String bake,String c
 	        }
 	    }
 	}
-    public List<CastBeans> find(String CastName,String Gender,int Age) {
+    public List<CastBeans> find(String CastName,String Gender,String Age) {
         Connection conn = null;
         List<CastBeans> castList = new ArrayList<CastBeans>();
 
@@ -234,12 +234,10 @@ public void CastF5(String castName, int age, String gender, String bake,String c
             // SELECT文を準備
             String sql = "SELECT * FROM cast_tanuki WHERE cast_name != 'admin' ";
             if(!(CastName.isEmpty())) {
-            	sql += "AND cast_name = '"+ CastName +"'";
-           }
-            if(!(Gender.isEmpty())) {
+            	sql += "AND cast_name LIKE'" + "%" + CastName + "%" + "' ";
+           }if(!(Gender.isEmpty())) {
             	sql += "AND gender = '"+ Gender +"'";
-           }
-           if(!(Age < 1)) {
+           }if(!(Age.isEmpty())) {
            	sql += "AND age = "+ Age ;
           }
              // SELECTを実行し、結果表を取得
@@ -251,8 +249,8 @@ public void CastF5(String castName, int age, String gender, String bake,String c
             // Userインスタンスに設定し、ArrayListインスタンスに追加
             while (rs.next()) {
                 String castName = rs.getString("cast_name");
-                int age = rs.getInt("age");
                 String gender = rs.getString("gender");
+                int age = rs.getInt("age");
 
 
                 CastBeans cast = new CastBeans(castName,gender,age);

@@ -119,7 +119,7 @@ public class UserDao {
 	            conn = DBManager.getConnection();
 
 	    //SELECT文
-		String sql = "SELECT login_id, user_name, phone FROM user WHERE user_id = ?";
+		String sql = "SELECT login_id, user_name, phone FROM user WHERE login_id = ?";
 
 		// SELECTを実行し、結果表（ResultSet）を取得
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class UserDao {
 	        String loginId = rs.getString("login_id");
 	        String userName = rs.getString("user_name");
 	        String phone = rs.getString("phone");
-	        user = new UserBeans(Integer.parseInt(id),loginId, userName, phone);
+	        user = new UserBeans(loginId,userName, phone);
 
 	    }
 
@@ -291,6 +291,7 @@ public void Userdelete(String loginId) {
             }
         }
     }
+
 }
 
 }

@@ -68,7 +68,7 @@ public class CastListServlet extends HttpServlet {
 		// リクエストパラメータの入力項目を取得
 		String castName = request.getParameter("cast_name");
 		String gender = request.getParameter("gender");
-		int age = Integer.parseInt(request.getParameter("age"));
+		String age = request.getParameter("age");
 
 		CastDao castDao = new CastDao();
 		List<CastBeans> castList = castDao.find(castName,gender,age);

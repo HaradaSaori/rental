@@ -43,7 +43,9 @@ filter: alpha(opacity=60);
     </tr>
     <tr>
       <th>性別</th>
-      <td><input type="radio" name="gender" value="男">男 <input type="radio" name="gender" value="女">女</td>
+      <td>
+      <input type="text" name="gender" class="form-control" placeholder="男or女">
+      </td>
     </tr>
     <tr>
       <th>人年齢</th>
@@ -56,7 +58,11 @@ filter: alpha(opacity=60);
       <div align ="right"><input type="submit" class="btn btn-light" value="検索"></div>
       </td>
     </tr>
-</table></form><br><a href="NewCastServlet">キャスト登録</a><br><br>
+</table></form><br>
+<c:choose>
+  <c:when test="${userInfo.loginId == 'admin'}">
+<a href="NewCastServlet">キャスト登録</a>
+</c:when></c:choose><br><br>
 <img src="./img/line.jpg">
 <br><br><br>
 <img src="./img/s_tanukilist.jpg">  <font size = "4">キャスト一覧</font><br><br>

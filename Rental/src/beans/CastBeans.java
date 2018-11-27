@@ -41,6 +41,17 @@ public class CastBeans{
 			this.price = price;
 	}
 
+		//
+		public CastBeans(String loginId,String castName,int age,String gender,String bake,String comment,int price) {
+			this.loginId = loginId;
+			this.castName = castName;
+			this.age = age;
+			this.gender = gender;
+			this.bake = bake;
+			this.comment = comment;
+			this.price = price;
+	}
+
 		public CastBeans(String castName,String gender,int age) {
 			this.castName = castName;
 			this.age = age;

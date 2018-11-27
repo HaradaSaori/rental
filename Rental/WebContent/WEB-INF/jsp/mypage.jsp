@@ -63,17 +63,19 @@ filter: alpha(opacity=60);
 <input type="submit" class="btn btn-light" value="情報の更新"></form><br>
 <br><br><br>
 <font size = "5">レンタル履歴</font><br><br>
-
+<button type="button" class="btn btn-success" onclick="location.href='MyReserveServlet?id=${userdata.loginId}'">予約を確認する</button>
+<br><br>
+<c:forEach var="reserve" items="${reserveList}">
 <table>
  <tr align=center>
-<c:forEach var="reserve" items="${reserveList}">
- <td><input type="hidden" value="${reserve.id}" name="id">
-  ${reserve.castName} (${reserve.formatDate})<br>
-  ${reserve.resCom} / ${reserve.place}
-  <img src=./img/s_tanuki_profile.jpg>
-  </td></c:forEach>
- </tr>
-</table>
+ <td width="200"><input type="hidden" value="${reserve.id}" name="id">
+  <img src=./img/s_tanukidetail.jpg>
+  </td><td width="500">
+  ${reserve.castName} <br>(${reserve.formatDate})</td>
+  <td width="800">
+  ${reserve.resCom}  <br>${reserve.place}
+  </td></tr>
+</table><img src=./img/s_line.jpg></c:forEach><br><br><br>
 </div>
   </body>
 </html>

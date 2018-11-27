@@ -89,10 +89,11 @@ public class ReserveServlet extends HttpServlet {
 			return;
 }
 
+
 		try {
 			reserveDao.newReserve(castId,castName,userId,userName,rDate,place,resCom);
 		} catch (SQLException e) {
-			request.setAttribute("errMsg", "入力された内容は正しくありません");
+			request.setAttribute("errMsg", "その日付はすでに予約されています");
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
 			dispatcher.forward(request, response);

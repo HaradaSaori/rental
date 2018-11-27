@@ -47,7 +47,7 @@ filter: alpha(opacity=60);
 </table><br><br><br>
 
 レンタル金額(一日)：￥${castdata.price}<br>
-<button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet?id=${castdata.id}'">レンタルする！</button><br><br><br><br>
+<button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet?id=${castdata.id}&?userIdi=${userdata.id}'">レンタルする！</button><br><br><br><br>
 <br>
 <img src="./img/s_review.jpg">  <font size = "4">お客様の声</font><br><br>
 	<c:forEach var="review" items="${reviewList}">

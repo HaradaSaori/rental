@@ -34,19 +34,9 @@ filter: alpha(opacity=60);
   <img src="./img/index_tanuki.jpg" /><br><br>
 ご予約ありがとうございます！<br><br>
 <table>
- <tr><td>キャスト名：</td>
- <td>宗次郎</td></tr>
-  <tr><td>日にち：</td>
- <td>2018年11月20日</td></tr>
-  <tr><td>場所：</td>
- <td>下北沢</td></tr>
-  <tr><td>依頼内容：</td>
- <td>舞台のチラシ配りの手伝い</td></tr>
- </table><br><br><br>
-<table>
 <tr>
 <td width="100" align="center"><button type="button" class="btn btn-success" onclick="location.href='CastListServlet'">続けて予約する</button></td>
-<td width="100" align="center"><button type="button" class="btn btn-light" onclick="location.href='MypageServlet'">マイページへ</button></td>
+<td width="100" align="center"><button type="button" class="btn btn-light" onclick="location.href='MyReserveServlet?id=${userInfo.loginId}'">予約を確認する</button></td>
 </tr>
 </table><br><br><br>
   </div>
