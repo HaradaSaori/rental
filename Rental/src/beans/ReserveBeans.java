@@ -50,6 +50,11 @@ public class ReserveBeans{
 		this.resCom = resCom;
 }
 
+	public ReserveBeans(String loginId,String castName,Date rDate) {
+		this.loginId = loginId;
+		this.castName = castName;
+		this.rDate = rDate;
+	}
 
 	public int getId() {
 		return id;

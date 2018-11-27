@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.CastBeans;
+import beans.ReserveBeans;
 import beans.ReviewBeans;
 import dao.CastDao;
+import dao.ReserveDao;
 import dao.ReviewDao;
 
 /**
@@ -56,6 +58,13 @@ public class CastDetailServlet extends HttpServlet {
 
 		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
 		   request.setAttribute("castdata",castdata);
+
+		 //idを引数にして、idに紐づくユーザ情報を出力する
+	       ReserveDao reserveDao = new ReserveDao();
+		   List<ReserveBeans> reserveList = reserveDao.findReserve(id);
+
+		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
+		   request.setAttribute("reserveList",reserveList);
 
 			// 一覧情報を取得
 			ReviewDao reviewDao = new ReviewDao();

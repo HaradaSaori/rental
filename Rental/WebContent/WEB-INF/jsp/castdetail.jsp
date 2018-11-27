@@ -46,8 +46,18 @@ filter: alpha(opacity=60);
  <td>${castdata.comment}</td></tr>
 </table><br><br><br>
 
+<img src="./img/s_reserve.jpg">  <font size = "4">予約済</font><br><br>
+	<c:forEach var="reserve" items="${reserveList}">
+						<table>
+							<tr>
+								<td width="400"  valign="top">${reserve.rDate}</td>
+							</tr>
+							</table>
+		</c:forEach><br><br>
+
+
 レンタル金額(一日)：￥${castdata.price}<br>
-<button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet?id=${castdata.id}&?userIdi=${userdata.id}'">レンタルする！</button><br><br><br><br>
+<button type="button" class="btn btn-warning btn-lg" onclick="location.href='ReserveServlet?id=${castdata.id}'">レンタルする！</button><br><br><br><br>
 <br>
 <img src="./img/s_review.jpg">  <font size = "4">お客様の声</font><br><br>
 	<c:forEach var="review" items="${reviewList}">

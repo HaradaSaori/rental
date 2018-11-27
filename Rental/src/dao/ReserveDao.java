@@ -191,4 +191,48 @@ public class ReserveDao {
         return reserveList;
     }
 
+    public List<ReserveBeans> findReserve(String id) {
+        Connection conn = null;
+        List<ReserveBeans> reserveList = new ArrayList<ReserveBeans>();
+
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            String sql = "SELECT r_date FROM reserve WHERE cast_id =?";
+
+             // SELECTを実行し、結果表を取得
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+    		pStmt.setString(1, id);
+    		ResultSet rs = pStmt.executeQuery();
+
+    		ReserveBeans reserve  = null;
+
+            // 結果表に格納されたレコードの内容を
+            // Userインスタンスに設定し、ArrayListインスタンスに追加
+            while (rs.next()) {
+                String castName = rs.getString("cast_tanuki.cast_name");
+                Date rDate = rs.getDate("r_date");
+                reserve = new ReserveBeans(id, castName,rDate);
+
+                reserveList.add(reserve);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+        return reserveList;
+    }
+
 }
