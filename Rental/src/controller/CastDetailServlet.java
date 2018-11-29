@@ -73,6 +73,11 @@ public class CastDetailServlet extends HttpServlet {
 			// リクエストスコープに一覧情報をセット
 			request.setAttribute("reviewList", reviewList);
 
+			reserveDao = new ReserveDao();
+			List<java.sql.Date> calList = reserveDao.cal();
+
+			// リクエストスコープに一覧情報をセット
+			request.setAttribute("calList", calList);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castdetail.jsp");
 			dispatcher.forward(request, response);

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import beans.ReserveBeans;
@@ -200,7 +201,7 @@ public class ReserveDao {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "SELECT r_date FROM reserve WHERE cast_id =?";
+            String sql = "SELECT r_date,(CASE dayofweek(r_date) WHEN 1 THEN '日' WHEN 2 THEN '月' WHEN 3 THEN '火' WHEN 4 THEN '水' WHEN 5 THEN '木' WHEN 6 THEN '金' WHEN 7 THEN '土' END) AS week,cast_tanuki.cast_id, cast_tanuki.cast_name FROM reserve  join cast_tanuki on reserve.cast_id = cast_tanuki.login_id WHERE r_date BETWEEN CURDATE() AND CURDATE() +interval 2 week - interval 1 SECOND AND r_date > now() AND cast_tanuki.cast_id =? ORDER BY r_date";
 
              // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -214,7 +215,8 @@ public class ReserveDao {
             while (rs.next()) {
                 String castName = rs.getString("cast_tanuki.cast_name");
                 Date rDate = rs.getDate("r_date");
-                reserve = new ReserveBeans(id, castName,rDate);
+                String week = rs.getString("week");
+                reserve = new ReserveBeans(id, castName,rDate,week);
 
                 reserveList.add(reserve);
             }
@@ -235,4 +237,31 @@ public class ReserveDao {
         return reserveList;
     }
 
+    public List<java.sql.Date> cal() {
+
+    	ArrayList<java.sql.Date> list = new ArrayList<>();
+
+		for(int i = 0;i < 14;i++){
+		    Calendar cal = Calendar.getInstance();
+		    cal.set(Calendar.HOUR_OF_DAY, 0);
+		    cal.set(Calendar.MINUTE, 0);
+		    cal.set(Calendar.SECOND, 0);
+		    cal.set(Calendar.MILLISECOND, 0);
+
+
+
+
+		    cal.add(Calendar.DAY_OF_MONTH, i);
+
+		    java.sql.Date sqlDate;
+		    java.util.Date date = cal.getTime();
+		    sqlDate = new java.sql.Date(date.getTime());
+
+
+		    list.add(sqlDate);
+		}
+
+		return list;
+
+    }
 }

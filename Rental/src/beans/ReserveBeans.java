@@ -19,6 +19,7 @@ public class ReserveBeans{
 	private Date rDate;
 	private String place;
 	private String resCom;
+	private String week;
 
 
 	// コンストラクタ
@@ -50,10 +51,11 @@ public class ReserveBeans{
 		this.resCom = resCom;
 }
 
-	public ReserveBeans(String loginId,String castName,Date rDate) {
+	public ReserveBeans(String loginId,String castName,Date rDate,String week) {
 		this.loginId = loginId;
 		this.castName = castName;
 		this.rDate = rDate;
+		this.week = week;
 	}
 
 	public int getId() {
@@ -100,6 +102,10 @@ public class ReserveBeans{
 		return sdf.format(rDate);
 	}
 
+	public String getFormatD() {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日");
+		return sdf.format(rDate);
+	}
 
 	public String getPlace() {
 		return place;
@@ -154,6 +160,14 @@ public class ReserveBeans{
 
 	public void setCastId(int castId) {
 		this.castId = castId;
+	}
+
+	public String getWeek() {
+		return week;
+	}
+
+	public void setWeek(String week) {
+		this.week = week;
 	}
 
 
