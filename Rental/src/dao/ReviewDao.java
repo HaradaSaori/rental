@@ -95,5 +95,38 @@ public class ReviewDao {
 	        }
 	   }
 	}
+	public void Revdelete(String userId,String castId) {
+	    Connection conn = null;
+	    try {
+	        // データベースへ接続
+	        conn = DBManager.getConnection();
+
+	     // DELETE文を準備
+	        String sql = "DELETE FROM review WHERE user_id = ? AND cast_id = ?";
+
+	     // DELETEを実行
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+	        pStmt.setString(1, userId);
+	        pStmt.setString(2, castId);
+	        pStmt.executeUpdate();
+
+	        pStmt.close();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+
+	    } finally {
+	        // データベース切断
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+
+	            }
+	        }
+	    }
+
+	}
 
 }

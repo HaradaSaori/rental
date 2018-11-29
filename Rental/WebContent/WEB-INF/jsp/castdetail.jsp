@@ -34,6 +34,8 @@ a:hover img {
 </head>
 <body>
 	<jsp:include page="/baselayout/header.jsp" />
+	<input type="hidden" value="${userInfo.loginId}" name="loginId">
+<input type="hidden" value="${castdata.loginId}" name="castId">
 	<div align="center">
 
 		<img src="./img/s_tanukidetail.jpg"> <font size="4">${castdata.castName}</font><br>
@@ -99,19 +101,28 @@ a:hover img {
 			size="4">お客様の声</font><br>
 		<br>
 		<c:forEach var="review" items="${reviewList}">
-			<c:choose>
+		<c:choose>
 				<c:when test="${review.castId == castdata.loginId}">
-
 					<table>
 						<tr>
-							<td width="400" valign="top">${review.revC}(${review.userName})</td>
+							<td width="400" valign="top">${review.revC}(${review.userName})
+							<br>
+							<c:choose>
+							<c:when test="${userInfo.loginId == review.userId && review.castId == castdata.loginId}">
+	<form action="CastDetailServlet" method="post">
+	<div align="center">
+	<input type="submit" class="btn btn-info" name = "submit" value="削除"></div>
+	</form>
+							</c:when></c:choose>
+							</td>
 						</tr>
 					</table>
 					<br>
 					<img src="./img/s_line.jpg">
+
 				</c:when>
 			</c:choose>
-		</c:forEach>
+</c:forEach>
 		<br>
 		<br>
 		<button type="button" class="btn btn-success"
