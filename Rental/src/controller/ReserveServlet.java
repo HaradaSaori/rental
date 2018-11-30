@@ -51,7 +51,9 @@ public class ReserveServlet extends HttpServlet {
 
 				//idを引数にして、idに紐づくユーザ情報を出力する
 			       ReserveDao reserveDao = new ReserveDao();
-				   ReserveBeans reservedata = reserveDao.reserveData(id);
+				   ReserveBeans reservedata = reserveDao.reserveData(Integer.parseInt(id));
+
+
 
 				   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
 				   request.setAttribute("reservedata",reservedata);
@@ -70,7 +72,7 @@ public class ReserveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの入力項目を取得
-		String castId = request.getParameter("castId");
+		String loginId = request.getParameter("loginId");
 		String castName = request.getParameter("castName");
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
@@ -84,6 +86,19 @@ public class ReserveServlet extends HttpServlet {
 {
 			request.setAttribute("errMsg", "必須項目を入力してください");
 
+		       reserveDao = new ReserveDao();
+			   ReserveBeans reservedatad = reserveDao.reserveDatad(loginId);
+
+			reservedatad.setLoginId(loginId);
+			reservedatad.setCastName(castName);
+			reservedatad.setUserId(userId);
+			reservedatad.setUserName(userName);
+			reservedatad.setPlace(place);
+			reservedatad.setResCom(resCom);
+			// ユーザ情報をリクエストスコープにセットしてjspにフォワード
+			   request.setAttribute("reservedata",reservedatad);
+
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
 			dispatcher.forward(request, response);
 			return;
@@ -91,9 +106,23 @@ public class ReserveServlet extends HttpServlet {
 
 
 		try {
-			reserveDao.newReserve(castId,castName,userId,userName,rDate,place,resCom);
+			reserveDao.newReserve(loginId,castName,userId,userName,rDate,place,resCom);
 		} catch (SQLException e) {
 			request.setAttribute("errMsg", "その日付はすでに予約されています");
+
+			//idを引数にして、idに紐づくユーザ情報を出力する
+		       reserveDao = new ReserveDao();
+			   ReserveBeans reservedatad = reserveDao.reserveDatad(loginId);
+
+			reservedatad.setLoginId(loginId);
+			reservedatad.setCastName(castName);
+			reservedatad.setUserId(userId);
+			reservedatad.setUserName(userName);
+			reservedatad.setPlace(place);
+			reservedatad.setResCom(resCom);
+			// ユーザ情報をリクエストスコープにセットしてjspにフォワード
+			   request.setAttribute("reservedata",reservedatad);
+
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reserve.jsp");
 			dispatcher.forward(request, response);

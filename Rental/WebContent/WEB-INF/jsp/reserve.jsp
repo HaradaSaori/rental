@@ -34,7 +34,8 @@ width: 400px;
   <div align="center"><br><br><br>
 <img src ="./img/s_tanukidetail.jpg"> <font size ="3">レンタル申し込み</font><br><br><br>
 <form class="form-signin"  action="ReserveServlet" method="post">
-<input type="hidden" value="${reservedata.loginId}" name="castId">
+<input type="hidden" value="${reservedata.loginId}" name="loginId">
+<input type="hidden" value="${reservedata.castName}" name="castName">
 <input type="hidden" value="${userInfo.loginId}" name="userId">
 <table>
 <tr>
@@ -43,6 +44,7 @@ width: 400px;
 </td>
 <td>
 ${reservedata.castName}
+
 </td>
 </tr>
 <tr>
@@ -59,11 +61,11 @@ ${userInfo.userName}
 </tr>
 <tr>
 <td>場所</td>
-<td><input class="form-control" type="text" name="place" ></td>
+<td><input class="form-control" type="text" name="place" value="${reservedata.place}"></td>
 </tr>
 <tr>
 <td>依頼内容</td>
-<td><textarea class="form-control" name="resCom"></textarea></td></tr>
+<td><textarea class="form-control" name="resCom">${reservedata.resCom}</textarea></td></tr>
 <tr>
 </table><br>
 <input type="submit" class="btn btn-info" value="予約する"></form><br><br><br><br>

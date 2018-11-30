@@ -31,6 +31,10 @@ public class ReserveBeans{
 		this.loginId = loginId;
 		this.castName = castName;
 }
+	public ReserveBeans(String loginId,String castName) {
+		this.loginId = loginId;
+		this.castName = castName;
+}
 
 	public ReserveBeans(String userId,String userName,String loginId,String castName,Date rDate,String place,String resCom) {
 		this.userId = userId;
@@ -40,6 +44,35 @@ public class ReserveBeans{
 		this.rDate = rDate;
 		this.place = place;
 		this.resCom = resCom;
+}
+
+	public ReserveBeans(int id,String loginId,String castName,String userId,String userName,String resCom,String place) {
+		this.id = id;
+		this.loginId = loginId;
+		this.castName = castName;
+		this.userId = userId;
+		this.userName = userName;
+		this.place = place;
+		this.resCom = resCom;
+}
+	public ReserveBeans(String loginId,String castName,String userId,String userName,String resCom,String place) {
+		this.loginId = loginId;
+		this.castName = castName;
+		this.userId = userId;
+		this.userName = userName;
+		this.place = place;
+		this.resCom = resCom;
+}
+
+	public ReserveBeans(int id,String loginId,String castName,String userId,String userName,String resCom,String place,Date rDate) {
+		this.id = id;
+		this.loginId = loginId;
+		this.castName = castName;
+		this.userId = userId;
+		this.userName = userName;
+		this.place = place;
+		this.resCom = resCom;
+		this.rDate = rDate;
 }
 
 	public ReserveBeans(String userId,String loginId,String castName,Date rDate,String place,String resCom) {

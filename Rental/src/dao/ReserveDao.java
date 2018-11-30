@@ -53,14 +53,59 @@ public class ReserveDao {
 	    }
 		}
 
-	public ReserveBeans reserveData(String id) {
+	public ReserveBeans reserveData(int id) {
         Connection conn = null;
         try {
             // データベースへ接続
             conn = DBManager.getConnection();
 
     //SELECT文
-	String sql = "SELECT reserve.cast_id,cast_name FROM reserve INNER JOIN cast_tanuki ON reserve.cast_id = cast_tanuki.login_id WHERE cast_tanuki.cast_id = ?";
+	String sql = "SELECT cast_id,login_id,cast_name FROM cast_tanuki WHERE cast_id = ?";
+
+	// SELECTを実行し、結果表（ResultSet）を取得
+	PreparedStatement pStmt = conn.prepareStatement(sql);
+	pStmt.setInt(1, id);
+	ResultSet rs = pStmt.executeQuery();
+
+	ReserveBeans reserve  = null;
+
+    while (rs.next()) {
+    	String loginId = rs.getString("login_id");
+        String castName = rs.getString("cast_name");
+
+        reserve = new ReserveBeans(id,loginId, castName);
+
+    }
+
+
+    pStmt.close();
+
+    return reserve;
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
+        return null;
+    }
+
+	public ReserveBeans reserveDatad(String id) {
+        Connection conn = null;
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+    //SELECT文
+	String sql = "SELECT cast_id,cast_name FROM cast_tanuki WHERE login_id = ?";
 
 	// SELECTを実行し、結果表（ResultSet）を取得
 	PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -72,7 +117,9 @@ public class ReserveDao {
     while (rs.next()) {
     	String loginId = rs.getString("cast_id");
         String castName = rs.getString("cast_name");
-        reserve = new ReserveBeans(Integer.parseInt(id),loginId, castName);
+
+
+        reserve = new ReserveBeans(loginId, castName);
 
     }
 
