@@ -111,7 +111,8 @@ a:hover img {
 							<c:when test="${userInfo.loginId == review.userId && review.castId == castdata.loginId}">
 	<form action="CastDetailServlet" method="post">
 	<div align="center">
-	<input type="submit" class="btn btn-info" name = "submit" value="削除"></div>
+	<a href="ReviewDeleteServlet?id=${review.revId}">削除</a>
+	</div>
 	</form>
 							</c:when></c:choose>
 							</td>

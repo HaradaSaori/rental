@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,24 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.CastBeans;
-import beans.ReserveBeans;
 import beans.ReviewBeans;
-import dao.CastDao;
-import dao.ReserveDao;
 import dao.ReviewDao;
 
 /**
- * Servlet implementation class CastDetailServlet
+ * Servlet implementation class ReviewDeleteServlet
  */
-@WebServlet("/CastDetailServlet")
-public class CastDetailServlet extends HttpServlet {
+@WebServlet("/ReviewDeleteServlet")
+public class ReviewDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CastDetailServlet() {
+    public ReviewDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,7 +36,7 @@ public class CastDetailServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (null == session.getAttribute("userInfo")){
 			// ログイン画面へ遷移(リダイレクト).
-			response.sendRedirect( "IndexServlet" );
+			response.sendRedirect( "LoginServlet" );
 			return;
 			}
 
@@ -51,43 +46,31 @@ public class CastDetailServlet extends HttpServlet {
 		// 確認用：idをコンソールに出力
 	       System.out.println(id);
 
-
 		//idを引数にして、idに紐づくユーザ情報を出力する
-	       CastDao castDao = new CastDao();
-		   CastBeans castdata = castDao.castData(id);
+	       ReviewDao reviewDao = new ReviewDao();
+		   ReviewBeans reviewdata = reviewDao.reviewData(Integer.parseInt(id));
 
 		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
-		   request.setAttribute("castdata",castdata);
+		   request.setAttribute("reviewdata",reviewdata);
 
-		 //idを引数にして、idに紐づくユーザ情報を出力する
-	       ReserveDao reserveDao = new ReserveDao();
-		   List<ReserveBeans> reserveList = reserveDao.findReserve(id);
-
-		   // ユーザ情報をリクエストスコープにセットしてjspにフォワード
-		   request.setAttribute("reserveList",reserveList);
-
-			// 一覧情報を取得
-			ReviewDao reviewDao = new ReviewDao();
-			List<ReviewBeans> reviewList = reviewDao.review();
-
-			// リクエストスコープに一覧情報をセット
-			request.setAttribute("reviewList", reviewList);
-
-			reserveDao = new ReserveDao();
-			List<java.sql.Date> calList = reserveDao.cal();
-
-			// リクエストスコープに一覧情報をセット
-			request.setAttribute("calList", calList);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/castdetail.jsp");
-			dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/reviewdelete.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
+		// リクエストパラメータの入力項目を取得
+		String revId = request.getParameter("revId");
+
+		ReviewDao reviewDao = new ReviewDao();
+		reviewDao.Revdelete(Integer.parseInt(revId));
+
+		// ユーザ一覧のサーブレットにリダイレクト
+		response.sendRedirect("CastListServlet");
 	}
 
 }

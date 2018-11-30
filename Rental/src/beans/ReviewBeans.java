@@ -25,6 +25,13 @@ public class ReviewBeans{
 		this.castId = castId;
 		this.revC = revC;
 	}
+	//
+	public ReviewBeans(String castId,String userId,int revId,String revC) {
+		this.castId = castId;
+		this.userId = userId;
+		this.revId = revId;
+		this.revC = revC;
+	}
 
 
 	public int getRevId() {

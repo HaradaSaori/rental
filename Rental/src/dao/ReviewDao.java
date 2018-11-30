@@ -95,19 +95,18 @@ public class ReviewDao {
 	        }
 	   }
 	}
-	public void Revdelete(String userId,String castId) {
+	public void Revdelete(int revId) {
 	    Connection conn = null;
 	    try {
 	        // データベースへ接続
 	        conn = DBManager.getConnection();
 
 	     // DELETE文を準備
-	        String sql = "DELETE FROM review WHERE user_id = ? AND cast_id = ?";
+	        String sql = "DELETE FROM review WHERE rev_id = ?";
 
 	     // DELETEを実行
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
-	        pStmt.setString(1, userId);
-	        pStmt.setString(2, castId);
+	        pStmt.setInt(1, revId);
 	        pStmt.executeUpdate();
 
 	        pStmt.close();
@@ -128,5 +127,50 @@ public class ReviewDao {
 	    }
 
 	}
+
+	public ReviewBeans reviewData(int revId) {
+        Connection conn = null;
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+    //SELECT文
+	String sql = "SELECT rev_c,cast_id,user_id FROM review WHERE rev_id = ?";
+
+	// SELECTを実行し、結果表（ResultSet）を取得
+	PreparedStatement pStmt = conn.prepareStatement(sql);
+	pStmt.setInt(1, revId);
+	ResultSet rs = pStmt.executeQuery();
+
+	ReviewBeans rev  = null;
+
+    while (rs.next()) {
+    	String castId = rs.getString("cast_id");
+        String userId = rs.getString("user_id");
+        String revC = rs.getString("rev_c");
+        rev = new ReviewBeans(castId,userId,revId,revC);
+
+    }
+
+
+    pStmt.close();
+
+    return rev;
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
+        return null;
+    }
 
 }
